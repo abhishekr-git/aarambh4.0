@@ -88,12 +88,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     href: "https://github.com/iedc-ceknpy",
     handle: "iedc-ceknpy",
   },
-  {
-    id: "twitter",
-    label: "X (Twitter)",
-    href: "https://twitter.com/iedc_ceknpy",
-    handle: "@iedc_ceknpy",
-  },
 ];
 
 export const FESTIVAL_METRICS = [
