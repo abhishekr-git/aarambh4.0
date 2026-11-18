@@ -48,7 +48,7 @@ export function CountdownTimer({ targetIso = SITE_CONFIG.startDateIso }: { targe
       className="glass-card rounded-2xl p-3.5 sm:p-5"
     >
       <p className="mb-2.5 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--brand-gold)] sm:mb-3 sm:text-xs">
-        Festival Launches In
+        Event Launches In
       </p>
       <div className="grid grid-cols-4 gap-2 sm:gap-3.5">
         {units.map((unit) => (
