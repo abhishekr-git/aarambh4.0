@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, CalendarDays, MapPin, Sparkles } from "lucide-react";
+import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
 import { CountdownTimer } from "@/components/sections/CountdownTimer";
 
@@ -65,11 +65,6 @@ export function HeroSection() {
             transition={{ duration: 0.55, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="text-center lg:col-span-7 lg:text-left"
           >
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--brand-primary)]/40 bg-[var(--brand-crimson)]/14 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-[#ffc47a]">
-              <Sparkles className="h-3.5 w-3.5 text-[var(--brand-secondary)]" />
-              <span>{SITE_CONFIG.edition} • National Tech &amp; Innovation Fest</span>
-            </div>
-
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {SITE_CONFIG.name}
               <span className="mt-1 block text-2xl font-bold text-[var(--text-secondary)] sm:text-3xl lg:text-4xl">
