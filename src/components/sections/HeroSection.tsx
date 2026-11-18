@@ -44,10 +44,10 @@ export function HeroSection() {
                 }}
               />
               <Image
-                src={SITE_CONFIG.assets.logoFull}
+                src={SITE_CONFIG.assets.logoMark}
                 alt={`${SITE_CONFIG.name} Official Logo`}
-                width={731}
-                height={635}
+                width={677}
+                height={677}
                 quality={95}
                 priority
                 className="relative z-10 h-auto w-full object-contain transition-transform duration-300 ease-out will-change-transform hover:scale-[1.03]"
