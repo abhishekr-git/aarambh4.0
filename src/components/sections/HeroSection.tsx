@@ -72,10 +72,6 @@ export function HeroSection() {
               </span>
             </h1>
 
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg lg:mx-0">
-              {SITE_CONFIG.heroSubtitle}
-            </p>
-
             {/* Date & Venue Pills */}
             <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
               <div className="glass-card inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white">
