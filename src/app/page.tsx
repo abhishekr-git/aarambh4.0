@@ -10,7 +10,6 @@ import {
 import { EVENTS } from "@/data/events";
 import { SCHEDULE_DAYS } from "@/data/schedule";
 import { SPONSORS } from "@/data/sponsors";
-import { FEATURED_TEAM_MEMBERS } from "@/data/team";
 import { GALLERY_ITEMS } from "@/data/gallery";
 import { FAQS } from "@/data/faqs";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -21,7 +20,6 @@ import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { EventGrid } from "@/components/events/EventGrid";
 import { ScheduleTimeline } from "@/components/schedule/ScheduleTimeline";
 import { SponsorGrid } from "@/components/sponsors/SponsorGrid";
-import { TeamCard } from "@/components/team/TeamCard";
 import { FAQAccordion } from "@/components/faq/FAQAccordion";
 import { RegistrationCTA } from "@/components/ui/RegistrationCTA";
 
@@ -307,35 +305,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. Organising Committee */}
-      <section className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            kicker="The People Behind Aarambh"
-            title="Organising"
-            highlight="Committee"
-            subtitle="Guided by IEDC CEK faculty nodal officers and driven by dedicated student builders."
-          />
-          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {FEATURED_TEAM_MEMBERS.map((member, idx) => (
-              <ScrollReveal key={member.id} delay={Math.min(idx * 0.05, 0.2)}>
-                <TeamCard member={member} />
-              </ScrollReveal>
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/about#committee"
-              className="btn-outline-glass inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold"
-            >
-              <span>Meet Full IEDC CEKNPY Execom</span>
-              <ArrowRight className="h-4 w-4 text-[var(--brand-secondary)]" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 10. Location, Map & Travel Guide */}
+      {/* 9. Location, Map & Travel Guide */}
       <section
         id="location"
         className="border-y border-[var(--border-subtle)] bg-[var(--bg-secondary)]/55 py-20 sm:py-28"

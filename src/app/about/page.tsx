@@ -7,15 +7,13 @@ import {
   PREVIOUS_EDITION_HIGHLIGHTS,
   SITE_CONFIG,
 } from "@/data/site";
-import { TEAM_MEMBERS } from "@/data/team";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { TeamCard } from "@/components/team/TeamCard";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `Learn about ${SITE_CONFIG.name}, IEDC, ${SITE_CONFIG.collegeName}, previous edition highlights, and our organising committee.`,
+  description: `Learn about ${SITE_CONFIG.name}, IEDC, ${SITE_CONFIG.collegeName}, and previous edition highlights.`,
 };
 
 export default function AboutPage() {
@@ -131,23 +129,6 @@ export default function AboutPage() {
                   {item.metric}
                 </p>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-
-      {/* Organising Committee */}
-      <div id="committee" className="mt-24">
-        <SectionHeading
-          kicker="IEDC CEKNPY Executive Committee"
-          title="Organising"
-          highlight="Committee"
-          subtitle="Faculty nodal officers and current student executive committee driving Aarambh 4.0."
-        />
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {TEAM_MEMBERS.map((member, idx) => (
-            <ScrollReveal key={member.id} delay={Math.min(idx * 0.05, 0.2)}>
-              <TeamCard member={member} />
             </ScrollReveal>
           ))}
         </div>
