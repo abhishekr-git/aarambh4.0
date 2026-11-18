@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import { Globe, Mail, MapPin, Phone } from "lucide-react";
 import { SITE_CONFIG, SOCIAL_LINKS } from "@/data/site";
-import { FAQS } from "@/data/faqs";
 import { TEAM_MEMBERS } from "@/data/team";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { LocationMapSection } from "@/components/sections/LocationMapSection";
-import { FAQAccordion } from "@/components/faq/FAQAccordion";
 
 export const metadata: Metadata = {
   title: "Contact & Location",
-  description: `Contact IEDC CEK, view campus directions and Google Maps for ${SITE_CONFIG.collegeName}, and browse ${SITE_CONFIG.name} FAQs.`,
+  description: `Contact IEDC CEK and view campus directions and Google Maps for ${SITE_CONFIG.collegeName}.`,
 };
 
 export default function ContactPage() {
@@ -131,18 +129,6 @@ export default function ContactPage() {
       {/* Campus Map & Travel Guide */}
       <div className="mt-16">
         <LocationMapSection />
-      </div>
-
-      {/* FAQs */}
-      <div className="mt-24">
-        <SectionHeading
-          kicker="Quick Help"
-          title="Frequently Asked"
-          highlight="Questions"
-        />
-        <div className="mt-12">
-          <FAQAccordion items={FAQS} />
-        </div>
       </div>
     </div>
   );

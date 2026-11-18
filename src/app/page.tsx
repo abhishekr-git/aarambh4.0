@@ -11,7 +11,6 @@ import { EVENTS } from "@/data/events";
 import { SCHEDULE_DAYS } from "@/data/schedule";
 import { SPONSORS } from "@/data/sponsors";
 import { GALLERY_ITEMS } from "@/data/gallery";
-import { FAQS } from "@/data/faqs";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { RibbonDivider } from "@/components/ui/RibbonDivider";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -20,7 +19,6 @@ import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { EventGrid } from "@/components/events/EventGrid";
 import { ScheduleTimeline } from "@/components/schedule/ScheduleTimeline";
 import { SponsorGrid } from "@/components/sponsors/SponsorGrid";
-import { FAQAccordion } from "@/components/faq/FAQAccordion";
 import { RegistrationCTA } from "@/components/ui/RegistrationCTA";
 
 const GalleryGrid = dynamic(
@@ -323,22 +321,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11. FAQs */}
-      <section id="faqs" className="py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            kicker="Need Answers?"
-            title="Frequently Asked"
-            highlight="Questions"
-            subtitle="Everything you need to know about participating in Aarambh 4.0."
-          />
-          <div className="mt-12">
-            <FAQAccordion items={FAQS} />
-          </div>
-        </div>
-      </section>
-
-      {/* 12. Final Registration & Contact Callout */}
+      {/* 10. Final Registration & Contact Callout */}
       <section className="pb-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
