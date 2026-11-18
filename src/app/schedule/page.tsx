@@ -14,7 +14,7 @@ export default function SchedulePage() {
     <div className="mx-auto max-w-7xl px-4 pt-32 pb-24 sm:px-6 lg:px-8">
       <SectionHeading
         kicker="Two-Day Itinerary"
-        title="Festival"
+        title="Event"
         highlight="Schedule"
         subtitle="Navigate Day 1 (January 16, 2027) and Day 2 (January 17, 2027) sessions, competitions, and main-stage highlights."
       />

@@ -28,7 +28,7 @@ export function ScheduleTimeline({ days }: ScheduleTimelineProps) {
       {/* Day Switcher Tabs */}
       <div
         role="tablist"
-        aria-label="Festival schedule days"
+        aria-label="Event schedule days"
         className="mb-10 flex flex-wrap justify-center gap-3"
       >
         {days.map((day) => {
