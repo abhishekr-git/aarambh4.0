@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   AARAMBH 4.0 — Centralized Design Token System
+   Swap any visual identity token here to retheme the entire application.
+   Currently synced with the Aarambh 4.0 Obsidian & Ember Flame logo palette.
+   ========================================================================== */
+
+:root {
+  /* Core Surfaces */
+  --bg-primary: #070505;
+  --bg-secondary: #120b0a;
+  --bg-elevated: #180f0d;
+  --bg-card: rgba(24, 15, 13, 0.76);
+  --bg-card-hover: rgba(36, 21, 16, 0.92);
+
+  /* Borders & Hairlines */
+  --border-subtle: rgba(255, 198, 130, 0.12);
+  --border-strong: rgba(245, 93, 5, 0.48);
+
+  /* Text Hierarchy */
+  --text-heading: #ffffff;
+  --text-primary: #faf6f0;
+  --text-secondary: #b5a69b;
+  --text-muted: #7d6e64;
+
+  /* Brand Palette (Extracted from Official Aarambh 4.0 Logo) */
+  --brand-crimson: #d80b24;
+  --brand-primary: #f55d05;
+  --brand-secondary: #ffb800;
+  --brand-gold: #e6c675;
+
+  /* Glows & Gradients */
+  --glow-primary: rgba(245, 93, 5, 0.42);
+  --glow-secondary: rgba(255, 184, 0, 0.32);
+  --gradient-brand: linear-gradient(135deg, #d80b24 0%, #f55d05 52%, #ffb800 100%);
+  --gradient-gold: linear-gradient(135deg, #fff1c1 0%, #e6c675 50%, #c99a3e 100%);
+  --gradient-surface: linear-gradient(145deg, rgba(216, 11, 36, 0.1) 0%, rgba(255, 184, 0, 0.04) 100%);
+}
+
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-brand-crimson: var(--brand-crimson);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-gold: var(--brand-gold);
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
+  --font-heading: var(--font-outfit), system-ui, -apple-system, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+  background-color: var(--bg-primary);
+  scroll-padding-top: 5.5rem;
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbars cleanly for mobile horizontal pill rails */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-heading);
+}
+
+/* Signature Brand Utilities */
+.gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-gold-text {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glass-card {
+  background: linear-gradient(155deg, rgba(28, 17, 14, 0.92) 0%, rgba(16, 10, 9, 0.94) 100%);
+  border: 1px solid var(--border-subtle);
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--border-strong);
+  background: linear-gradient(155deg, rgba(38, 22, 17, 0.96) 0%, rgba(20, 12, 10, 0.98) 100%);
+}
+
+.btn-brand {
+  background: var(--gradient-brand);
+  color: #ffffff;
+  box-shadow: 0 8px 26px var(--glow-primary);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, opacity 0.2s ease;
+}
+
+.btn-brand:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 34px rgba(245, 93, 5, 0.58);
+}
+
+.btn-outline-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+
+.btn-outline-glass:hover {
+  border-color: var(--border-strong);
+  background: rgba(245, 93, 5, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Ambient Dot Grid */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 184, 0, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Signature Scrolling Marquee Ribbon */
+@keyframes ribbonScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ribbon-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: ribbonScroll 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ribbon-track {
+    animation: none;
+  }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus Accessibility */
+:focus-visible {
+  outline: 2px solid var(--brand-secondary);
+  outline-offset: 3px;
+}
