@@ -200,7 +200,6 @@ export function Preloader() {
                 alt={SITE_CONFIG.name}
                 fill
                 priority
-                quality={95}
                 sizes="(max-width: 640px) 64vw, (max-width: 768px) 300px, 360px"
                 className="object-contain"
               />
