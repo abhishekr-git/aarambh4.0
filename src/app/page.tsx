@@ -74,7 +74,7 @@ export default function HomePage() {
             kicker="About The Festival"
             title="Igniting Innovation at"
             highlight="CE Karunagappally"
-            subtitle="Aarambh 4.0 is the flagship annual technology and entrepreneurship festival hosted by IEDC at College of Engineering Karunagappally, uniting builders, makers, and dreamers on January 16–17, 2027."
+            subtitle="Aarambh 4.0 is the flagship annual technology and entrepreneurship festival hosted by IEDC at College of Engineering Karunagappally, uniting builders, makers, and dreamers on January 15–16, 2027."
           />
 
           {/* 4 Pillars */}
@@ -244,7 +244,7 @@ export default function HomePage() {
             kicker="Festival Blueprint"
             title="Two Days of"
             highlight="Non-Stop Action"
-            subtitle="Switch between Day 1 (Jan 16) and Day 2 (Jan 17) to plan your sessions, sprints, and showcases."
+            subtitle="Switch between Day 1 (Jan 15) and Day 2 (Jan 16) to plan your sessions, sprints, and showcases."
           />
           <div className="mt-12">
             <ScheduleTimeline days={SCHEDULE_DAYS} />
@@ -313,7 +313,7 @@ export default function HomePage() {
             kicker="Venue & Directions"
             title="Reach"
             highlight="CEK Campus"
-            subtitle="Plan your journey to College of Engineering Karunagappally for January 16–17, 2027."
+            subtitle="Plan your journey to College of Engineering Karunagappally for January 15–16, 2027."
           />
           <div className="mt-12">
             <LocationMapSection />

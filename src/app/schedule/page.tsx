@@ -16,7 +16,7 @@ export default function SchedulePage() {
         kicker="Two-Day Itinerary"
         title="Event"
         highlight="Schedule"
-        subtitle="Navigate Day 1 (January 16, 2027) and Day 2 (January 17, 2027) sessions, competitions, and main-stage highlights."
+        subtitle="Navigate Day 1 (January 15, 2027) and Day 2 (January 16, 2027) sessions, competitions, and main-stage highlights."
       />
       <div className="mt-14">
         <ScheduleTimeline days={SCHEDULE_DAYS} />

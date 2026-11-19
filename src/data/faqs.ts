@@ -5,7 +5,7 @@ export const FAQS: FAQItem[] = [
     id: "faq-1",
     question: "When and where is Aarambh 4.0 taking place?",
     answer:
-      "Aarambh 4.0 will be held on January 16–17, 2027 at College of Engineering Karunagappally (CEK), Thodiyoor P.O., Kollam, Kerala.",
+      "Aarambh 4.0 will be held on January 15–16, 2027 at College of Engineering Karunagappally (CEK), Thodiyoor P.O., Kollam, Kerala.",
     category: "General",
   },
   {

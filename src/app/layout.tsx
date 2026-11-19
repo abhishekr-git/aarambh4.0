@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description:
-    "Aarambh 4.0 is the flagship annual technology and innovation festival organised by IEDC at College of Engineering Karunagappally, Kerala. January 16–17, 2027.",
+    "Aarambh 4.0 is the flagship annual technology and innovation festival organised by IEDC at College of Engineering Karunagappally, Kerala. January 15–16, 2027.",
   keywords: [
     "Aarambh 4.0",
     "IEDC CEK",

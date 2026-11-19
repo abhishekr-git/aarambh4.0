@@ -1,14 +1,14 @@
 import type { ScheduleDay } from "@/types";
 
 export const SCHEDULE_NOTE =
-  "Aarambh 4.0 is scheduled for January 16–17, 2027. Official event names, timings, and venues below are placeholders and will be updated once announced.";
+  "Aarambh 4.0 is scheduled for January 15–16, 2027. Official event names, timings, and venues below are placeholders and will be updated once announced.";
 
 export const SCHEDULE_DAYS: ScheduleDay[] = [
   {
     id: "day-1",
-    label: "Day 1 — January 16, 2027",
-    shortLabel: "Day 1 • Jan 16",
-    date: "Saturday, January 16, 2027",
+    label: "Day 1 — January 15, 2027",
+    shortLabel: "Day 1 • Jan 15",
+    date: "Friday, January 15, 2027",
     theme: "Day 1 Schedule — Official lineup coming soon",
     items: [
       {
@@ -50,9 +50,9 @@ export const SCHEDULE_DAYS: ScheduleDay[] = [
   },
   {
     id: "day-2",
-    label: "Day 2 — January 17, 2027",
-    shortLabel: "Day 2 • Jan 17",
-    date: "Sunday, January 17, 2027",
+    label: "Day 2 — January 16, 2027",
+    shortLabel: "Day 2 • Jan 16",
+    date: "Saturday, January 16, 2027",
     theme: "Day 2 Schedule — Official lineup coming soon",
     items: [
       {

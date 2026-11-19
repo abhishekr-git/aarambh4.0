@@ -59,7 +59,7 @@ export function LocationMapSection() {
           <div>
             <h3 className="text-xl font-bold text-white">Campus Travel Guide</h3>
             <p className="text-sm text-[var(--text-secondary)]">
-              How to reach College of Engineering Karunagappally on Jan 16–17, 2027.
+              How to reach College of Engineering Karunagappally on Jan 15–16, 2027.
             </p>
           </div>
           <div className="flex gap-2">

@@ -10,7 +10,7 @@ export const EVENT_CATEGORIES: EventCategory[] = [
 ];
 
 /**
- * Neutral placeholder events for Aarambh 4.0 (Jan 16–17, 2027).
+ * Neutral placeholder events for Aarambh 4.0 (Jan 15–16, 2027).
  * Replace titles, descriptions, posters, fees, rules, and registration URLs
  * once the official Aarambh 4.0 lineup is finalized.
  */
@@ -29,7 +29,7 @@ export const EVENTS: FestivalEvent[] = [
       "Check back soon for the complete brief, rules, registration fee, and prize details.",
     ],
     day: "Day 1",
-    dateLabel: "Jan 16, 2027",
+    dateLabel: "Jan 15, 2027",
     duration: "To Be Announced",
     venue: "CEK Campus (TBA)",
     teamSize: "To Be Announced",
@@ -64,7 +64,7 @@ export const EVENTS: FestivalEvent[] = [
       "Check back soon for the complete brief, rules, registration fee, and prize details.",
     ],
     day: "Day 1",
-    dateLabel: "Jan 16, 2027",
+    dateLabel: "Jan 15, 2027",
     duration: "To Be Announced",
     venue: "CEK Campus (TBA)",
     teamSize: "To Be Announced",
@@ -98,7 +98,7 @@ export const EVENTS: FestivalEvent[] = [
       "Official workshop topic, mentor details, and prerequisites for Event 3 of Aarambh 4.0 will be published here once confirmed.",
     ],
     day: "Day 1",
-    dateLabel: "Jan 16, 2027",
+    dateLabel: "Jan 15, 2027",
     duration: "To Be Announced",
     venue: "CEK Campus (TBA)",
     teamSize: "To Be Announced",
@@ -129,7 +129,7 @@ export const EVENTS: FestivalEvent[] = [
       "Official details and guidelines for Event 4 of Aarambh 4.0 are currently being finalized by the IEDC CEK organizing committee.",
     ],
     day: "Day 2",
-    dateLabel: "Jan 17, 2027",
+    dateLabel: "Jan 16, 2027",
     duration: "To Be Announced",
     venue: "CEK Campus (TBA)",
     teamSize: "To Be Announced",
@@ -162,7 +162,7 @@ export const EVENTS: FestivalEvent[] = [
       "Official exhibition lineup and showcase details for Event 5 of Aarambh 4.0 will be published here once confirmed.",
     ],
     day: "Day 2",
-    dateLabel: "Jan 17, 2027",
+    dateLabel: "Jan 16, 2027",
     duration: "To Be Announced",
     venue: "CEK Campus (TBA)",
     teamSize: "To Be Announced",
@@ -193,7 +193,7 @@ export const EVENTS: FestivalEvent[] = [
       "Official guest lineup and stage program details for Event 6 of Aarambh 4.0 will be unveiled soon.",
     ],
     day: "Day 2",
-    dateLabel: "Jan 17, 2027",
+    dateLabel: "Jan 16, 2027",
     duration: "To Be Announced",
     venue: "CEK Campus (TBA)",
     teamSize: "To Be Announced",

@@ -55,7 +55,7 @@ export function Navbar() {
                 {SITE_CONFIG.name}
               </span>
               <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--brand-gold)]">
-                IEDC CEK • Jan 16–17
+                IEDC CEK • Jan 15–16
               </span>
             </div>
           </Link>

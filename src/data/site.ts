@@ -7,9 +7,9 @@ export const SITE_CONFIG = {
   tagline: "Imagine. Innovate. Integrate.",
   heroSubtitle:
     "The flagship annual technology, entrepreneurship, and innovation festival organised by IEDC CEKNPY at College of Engineering Karunagappally, Kerala.",
-  datesDisplay: "January 16–17, 2027",
-  datesShort: "Jan 16–17, 2027",
-  startDateIso: "2027-01-16T09:00:00+05:30",
+  datesDisplay: "January 15–16, 2027",
+  datesShort: "Jan 15–16, 2027",
+  startDateIso: "2027-01-15T09:00:00+05:30",
   siteUrl: "https://aarambh26.tech",
   organizer: "Innovation & Entrepreneurship Development Centre (IEDC CEKNPY)",
   collegeName: "College of Engineering Karunagappally",
@@ -94,7 +94,7 @@ export const FESTIVAL_METRICS = [
   { value: 1000, suffix: "+", label: "Expected Footfall" },
   { value: 50, suffix: "+", label: "Ideas Incubated by IEDC" },
   { value: 100, suffix: "+", label: "Active IEDC Builders" },
-  { value: 2, suffix: " Days", label: "Jan 16–17, 2027" },
+  { value: 2, suffix: " Days", label: "Jan 15–16, 2027" },
 ] as const;
 
 export const PREVIOUS_EDITION_HIGHLIGHTS: PreviousHighlight[] = [

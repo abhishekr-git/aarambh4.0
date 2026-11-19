@@ -3,7 +3,7 @@ import { SITE_CONFIG } from "@/data/site";
 
 const ITEMS = [
   "AARAMBH 4.0",
-  "JAN 16–17, 2027",
+  "JAN 15–16, 2027",
   "IEDC CEK",
   "IMAGINE. INNOVATE. INTEGRATE.",
   "KARUNAGAPPALLY, KERALA",
