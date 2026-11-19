@@ -52,7 +52,7 @@ export function CountdownTimer({ targetIso = SITE_CONFIG.startDateIso }: { targe
       className="w-full max-w-md"
     >
       <p className="text-left text-xs font-semibold uppercase tracking-[0.16em] text-[var(--brand-gold)]/85 mb-2.5">
-        Festival begins in
+        Event begins in
       </p>
 
       {/* Compact row of four evenly spaced columns with fine bronze dividers */}
