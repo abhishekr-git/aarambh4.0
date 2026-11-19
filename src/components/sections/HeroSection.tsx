@@ -65,11 +65,6 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
             className="text-center lg:col-span-7 lg:text-left"
           >
-            {/* Countdown Badge */}
-            <div className="mb-3.5 flex justify-center lg:justify-start">
-              <CountdownTimer />
-            </div>
-
             {/* H1: Aarambh 4.0 */}
             <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
               {SITE_CONFIG.name}
@@ -91,6 +86,11 @@ export function HeroSection() {
                 <MapPin className="h-4 w-4 text-[var(--brand-primary)]" aria-hidden="true" />
                 <span>{SITE_CONFIG.campusLabel}</span>
               </div>
+            </div>
+
+            {/* Four Red-to-Gold Countdown Tiles placed below date & venue, above hero buttons */}
+            <div className="mx-auto mt-6 max-w-lg lg:mx-0">
+              <CountdownTimer />
             </div>
 
             {/* Action Buttons */}

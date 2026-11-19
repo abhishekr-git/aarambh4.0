@@ -1,72 +1,75 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Clock } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
 
-interface CountdownState {
-  text: string;
-  show: boolean;
+interface TimeLeft {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 }
 
-function computeKolkataCountdown(startDateIso: string, endDateIso: string): CountdownState {
-  try {
-    const now = new Date();
-    // Use Asia/Kolkata timezone explicitly
-    const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
-    const kolkataNow = new Date(kolkataStr);
+function computeTimeLeft(targetIso: string): TimeLeft {
+  const targetMs = new Date(targetIso).getTime();
+  const nowMs = Date.now();
+  const diff = Math.max(0, targetMs - nowMs);
 
-    const start = new Date(startDateIso);
-    const end = new Date(endDateIso);
-
-    if (kolkataNow > end) {
-      return { text: "Event concluded", show: false };
-    }
-
-    if (kolkataNow >= start && kolkataNow <= end) {
-      return { text: "Happening now at CEK Campus", show: true };
-    }
-
-    const diffMs = start.getTime() - kolkataNow.getTime();
-    const days = Math.ceil(diffMs / 86_400_000);
-
-    if (days <= 0) {
-      return { text: "Event launches today", show: true };
-    }
-    if (days === 1) {
-      return { text: "Event launches tomorrow", show: true };
-    }
-
-    return { text: `Event launches in ${days} days`, show: true };
-  } catch {
-    return { text: "January 15–16, 2027", show: true };
-  }
+  return {
+    days: Math.floor(diff / 86_400_000),
+    hours: Math.floor((diff % 86_400_000) / 3_600_000),
+    minutes: Math.floor((diff % 3_600_000) / 60_000),
+    seconds: Math.floor((diff % 60_000) / 1000),
+  };
 }
 
-export function CountdownTimer() {
-  const [countdown, setCountdown] = useState<CountdownState>(() =>
-    computeKolkataCountdown(SITE_CONFIG.startDateIso, SITE_CONFIG.endDateIso)
-  );
+export function CountdownTimer({ targetIso = SITE_CONFIG.startDateIso }: { targetIso?: string }) {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => computeTimeLeft(targetIso));
 
   useEffect(() => {
-    // Update every hour rather than every second to eliminate CPU drain and screen-reader chatter
-    const interval = window.setInterval(() => {
-      setCountdown(computeKolkataCountdown(SITE_CONFIG.startDateIso, SITE_CONFIG.endDateIso));
-    }, 3_600_000);
+    // Initial sync
+    setTimeLeft(computeTimeLeft(targetIso));
 
-    return () => window.clearInterval(interval);
-  }, []);
+    // Update every second using configured festival start
+    const timer = window.setInterval(() => {
+      setTimeLeft(computeTimeLeft(targetIso));
+    }, 1000);
 
-  if (!countdown.show) return null;
+    return () => window.clearInterval(timer);
+  }, [targetIso]);
+
+  const units = [
+    { label: "Days", value: String(timeLeft.days).padStart(2, "0") },
+    { label: "Hours", value: String(timeLeft.hours).padStart(2, "0") },
+    { label: "Minutes", value: String(timeLeft.minutes).padStart(2, "0") },
+    { label: "Seconds", value: String(timeLeft.seconds).padStart(2, "0") },
+  ];
 
   return (
     <div
-      role="status"
-      aria-label="Event timeline"
-      className="inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-elevated)]/80 px-3.5 py-1 text-xs font-semibold text-[var(--brand-gold)]"
+      role="timer"
+      aria-label={`Countdown to ${SITE_CONFIG.name}`}
+      className="glass-card rounded-2xl p-3 sm:p-4.5"
     >
-      <Clock className="h-3.5 w-3.5 text-[var(--brand-primary)]" aria-hidden="true" />
-      <span>{countdown.text}</span>
+      <p className="mb-2 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--brand-gold)] sm:mb-2.5 sm:text-xs">
+        Event Launches In
+      </p>
+      <div className="grid grid-cols-4 gap-2 sm:gap-3">
+        {units.map((unit) => (
+          <div key={unit.label} className="text-center">
+            <div
+              suppressHydrationWarning
+              className="flex items-center justify-center rounded-xl py-2 font-[family-name:var(--font-outfit)] text-lg font-extrabold tabular-nums text-white shadow-lg shadow-[var(--brand-primary)]/20 sm:py-3 sm:text-2xl lg:text-3xl"
+              style={{ background: "var(--gradient-brand)" }}
+            >
+              {unit.value}
+            </div>
+            <span className="mt-1 block text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--text-secondary)] sm:mt-1.5 sm:text-xs">
+              {unit.label}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
