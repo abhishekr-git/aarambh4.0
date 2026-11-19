@@ -89,8 +89,8 @@ export function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+          {/* Desktop Navigation Links — Shown on desktop-width viewports (>=900px, including Android Desktop mode & laptops) */}
+          <nav className="hidden items-center gap-1 min-[900px]:flex" aria-label="Main navigation">
             {NAV_LINKS.map((link) => {
               const active =
                 link.href === "/"
@@ -101,7 +101,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
+                  className={`relative rounded-lg px-2.5 py-1.5 text-xs lg:px-3 lg:text-sm font-medium transition-colors ${
                     active
                       ? "text-[var(--brand-secondary)]"
                       : "text-[var(--text-secondary)] hover:text-white"
@@ -126,7 +126,7 @@ export function Navbar() {
           <div className="flex items-center gap-2.5">
             <Link
               href={headerCta.href}
-              className="btn-brand hidden rounded-xl px-4 py-2 text-xs font-bold sm:text-sm lg:inline-flex"
+              className="btn-brand hidden rounded-xl px-3.5 py-2 text-xs font-bold sm:text-sm min-[900px]:inline-flex"
             >
               {headerCta.label}
             </Link>
@@ -136,7 +136,7 @@ export function Navbar() {
               onClick={() => setMobileOpen((prev) => !prev)}
               aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileOpen}
-              className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-white/5 text-white transition-colors hover:border-[var(--border-strong)] lg:hidden"
+              className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-white/5 text-white transition-colors hover:border-[var(--border-strong)] min-[900px]:hidden"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -152,7 +152,7 @@ export function Navbar() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setMobileOpen(false)}
-                className="fixed inset-0 -z-10 bg-black/70 backdrop-blur-sm lg:hidden"
+                className="fixed inset-0 -z-10 bg-black/70 backdrop-blur-sm min-[900px]:hidden"
                 aria-hidden="true"
               />
               <motion.nav
@@ -161,7 +161,7 @@ export function Navbar() {
                 exit={{ opacity: 0, y: -8, scale: 0.98 }}
                 transition={{ duration: 0.18 }}
                 aria-label="Mobile navigation"
-                className="mt-2 max-h-[calc(100dvh-5.5rem)] overflow-y-auto rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/98 p-3 shadow-2xl lg:hidden"
+                className="mt-2 max-h-[calc(100dvh-5.5rem)] overflow-y-auto rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)]/98 p-3 shadow-2xl min-[900px]:hidden"
               >
                 <div className="flex flex-col gap-1">
                   {NAV_LINKS.map((link) => {

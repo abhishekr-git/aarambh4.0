@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       aria-label="Festival Introduction"
-      className="relative flex min-h-[88svh] items-center overflow-x-clip pt-16 pb-8 sm:pt-20 sm:pb-12 lg:min-h-[88svh] lg:pt-24 lg:pb-16"
+      className="relative flex items-center overflow-x-clip pt-20 pb-10 sm:pt-24 sm:pb-12 min-[900px]:pt-28 min-[900px]:pb-14"
     >
       {/* Ambient Glow Concentrated Around the Left Emblem Column */}
       <div
@@ -27,15 +27,15 @@ export function HeroSection() {
       />
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-6 sm:gap-10 lg:grid-cols-12 lg:gap-12">
-          {/* Emblem Column: Compact on mobile, spacious and prominent on desktop */}
+        <div className="grid grid-cols-1 items-center gap-8 min-[900px]:grid-cols-12 min-[900px]:gap-12">
+          {/* Emblem Column: Compact on mobile, spacious and prominent on desktop-width viewports (>=900px) */}
           <motion.div
             initial={prefersReduced ? false : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center justify-center lg:col-span-5"
+            className="flex flex-col items-center justify-center min-[900px]:col-span-5"
           >
-            <div className="relative flex w-full max-w-[140px] items-center justify-center sm:max-w-[220px] lg:max-w-[340px]">
+            <div className="relative flex w-full max-w-[140px] items-center justify-center sm:max-w-[180px] min-[900px]:max-w-[340px]">
               {/* Subtle emblem rim glow */}
               <div
                 className="pointer-events-none absolute -inset-6 rounded-full opacity-60"
@@ -51,18 +51,18 @@ export function HeroSection() {
                 width={677}
                 height={677}
                 priority
-                sizes="(max-width: 640px) 140px, (max-width: 1024px) 220px, 340px"
+                sizes="(max-width: 640px) 140px, (max-width: 899px) 180px, 340px"
                 className="relative z-10 h-auto w-full object-contain drop-shadow-[0_8px_24px_rgba(216,11,36,0.25)] transition-transform duration-300 ease-out hover:scale-[1.02]"
               />
             </div>
           </motion.div>
 
-          {/* Text & Content Column: All aligned to one crisp left edge */}
+          {/* Text & Content Column: Vertically centered beside the emblem on desktop */}
           <motion.div
             initial={prefersReduced ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-start text-left lg:col-span-7"
+            className="flex flex-col items-start text-left min-[900px]:col-span-7"
           >
             {/* H1: Aarambh 4.0 */}
             <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
