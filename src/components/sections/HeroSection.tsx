@@ -69,9 +69,9 @@ export function HeroSection() {
               {SITE_CONFIG.name}
             </h1>
 
-            {/* Clear Host Line in solid readable color */}
+            {/* Clear Host Line with IEDC highlighted */}
             <p className="mt-3 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
-              IEDC at{" "}
+              <span className="font-extrabold gradient-text">IEDC</span> at{" "}
               <span className="font-semibold text-white whitespace-normal break-words">{SITE_CONFIG.collegeName}</span>.
             </p>
 
