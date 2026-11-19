@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   edition: "4th Edition",
   tagline: "Imagine. Innovate. Integrate.",
   heroSubtitle:
-    "A two-day technology and entrepreneurship festival hosted by IEDC at College of Engineering Karunagappally.",
+    "IEDC at College of Engineering Karunagappally.",
   datesDisplay: "January 15–16, 2027",
   datesShort: "Jan 15–16, 2027",
   startDateIso: "2027-01-15T09:00:00+05:30",

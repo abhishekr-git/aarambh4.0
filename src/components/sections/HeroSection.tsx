@@ -71,7 +71,7 @@ export function HeroSection() {
 
             {/* Clear Host Line in solid readable color */}
             <p className="mt-3 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
-              A two-day technology and entrepreneurship festival hosted by IEDC at{" "}
+              IEDC at{" "}
               <span className="font-semibold text-white whitespace-normal break-words">{SITE_CONFIG.collegeName}</span>.
             </p>
 
