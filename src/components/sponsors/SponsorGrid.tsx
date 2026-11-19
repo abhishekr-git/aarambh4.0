@@ -116,7 +116,7 @@ export function SponsorGrid({ sponsors = INSTITUTIONAL_PARTNERS }: SponsorGridPr
                   <div className="mt-6 border-t border-[var(--border-subtle)] pt-4">
                     <a
                       href="mailto:iedc@ceknpy.ac.in?subject=Aarambh%204.0%20Sponsorship%20Inquiry"
-                      className={`inline-flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all ${
+                      className={`inline-flex min-h-[44px] w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all ${
                         isTitle
                           ? "btn-brand text-white"
                           : "btn-outline-glass"

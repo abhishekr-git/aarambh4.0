@@ -85,7 +85,7 @@ export function Footer() {
                 className="flex items-center gap-2 hover:text-white"
               >
                 <Mail className="h-4 w-4 shrink-0 text-[var(--brand-primary)]" aria-hidden="true" />
-                <span>{SITE_CONFIG.primaryEmail}</span>
+                <span className="break-all">{SITE_CONFIG.primaryEmail}</span>
               </a>
               <div className="flex flex-col gap-1 pt-1 text-xs font-semibold text-[var(--brand-gold)]">
                 <a

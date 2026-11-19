@@ -8,7 +8,7 @@ export function LocationMapSection() {
   const [mode, setMode] = useState<"bus" | "train">("bus");
 
   return (
-    <div id="location" className="space-y-6 sm:space-y-8">
+    <div id="location" className="scroll-mt-20 space-y-6 sm:scroll-mt-24 sm:space-y-8">
       {/* Map + Campus Address Block */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         {/* Address & Direct Actions */}
@@ -67,13 +67,13 @@ export function LocationMapSection() {
               Last-mile transit options to reach College of Engineering Karunagappally.
             </p>
           </div>
-          <div role="tablist" aria-label="Transit modes" className="flex gap-2">
+          <div role="tablist" aria-label="Transit modes" className="flex w-full gap-2 sm:w-auto">
             <button
               type="button"
               role="tab"
               aria-selected={mode === "bus"}
               onClick={() => setMode("bus")}
-              className={`inline-flex min-h-[40px] items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all sm:text-sm ${
+              className={`inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all sm:flex-none sm:text-sm ${
                 mode === "bus"
                   ? "btn-brand text-white"
                   : "border border-[var(--border-subtle)] bg-white/5 text-[var(--text-secondary)] hover:text-white"
@@ -87,7 +87,7 @@ export function LocationMapSection() {
               role="tab"
               aria-selected={mode === "train"}
               onClick={() => setMode("train")}
-              className={`inline-flex min-h-[40px] items-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all sm:text-sm ${
+              className={`inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all sm:flex-none sm:text-sm ${
                 mode === "train"
                   ? "btn-brand text-white"
                   : "border border-[var(--border-subtle)] bg-white/5 text-[var(--text-secondary)] hover:text-white"

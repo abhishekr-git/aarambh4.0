@@ -98,7 +98,11 @@ export function Preloader() {
             opacity: 0,
             transition: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
           }}
-          className="fixed inset-0 z-[100] flex h-[100dvh] w-full touch-none items-center justify-center overflow-hidden overscroll-none bg-[#030303] px-6 pb-[env(safe-area-inset-bottom)] select-none"
+          onClick={() => {
+            hasRevealedOnLoad = true;
+            setActive(false);
+          }}
+          className="fixed inset-0 z-[100] flex h-[100dvh] w-full cursor-pointer touch-none items-center justify-center overflow-hidden overscroll-none bg-[#030303] px-6 pb-[env(safe-area-inset-bottom)] select-none"
           role="presentation"
           aria-hidden="true"
         >

@@ -25,6 +25,16 @@ export function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [mobileOpen]);
+
   // Handle escape key to close mobile menu
   useEffect(() => {
     if (!mobileOpen) return;
@@ -126,7 +136,7 @@ export function Navbar() {
               onClick={() => setMobileOpen((prev) => !prev)}
               aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileOpen}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-white/5 text-white transition-colors hover:border-[var(--border-strong)] lg:hidden"
+              className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-white/5 text-white transition-colors hover:border-[var(--border-strong)] lg:hidden"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -163,6 +173,7 @@ export function Navbar() {
                       <Link
                         key={link.href}
                         href={link.href}
+                        onClick={() => setMobileOpen(false)}
                         className={`flex min-h-[44px] items-center rounded-xl px-4 py-2.5 text-base font-medium transition-colors ${
                           active
                             ? "bg-[var(--brand-primary)]/15 text-[var(--brand-secondary)] font-bold"
@@ -176,6 +187,7 @@ export function Navbar() {
                   })}
                   <Link
                     href={headerCta.href}
+                    onClick={() => setMobileOpen(false)}
                     className="btn-brand mt-2 flex min-h-[44px] w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-bold"
                   >
                     {headerCta.label}

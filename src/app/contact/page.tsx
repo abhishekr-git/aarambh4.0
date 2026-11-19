@@ -86,10 +86,10 @@ export default function ContactPage() {
                 <Mail className="h-5 w-5" aria-hidden="true" />
               </div>
               <h3 className="text-base font-bold text-white">Official Email</h3>
-              <div className="mt-2 space-y-1 text-xs">
+              <div className="mt-2 space-y-1.5 text-xs">
                 <a
                   href={`mailto:${SITE_CONFIG.primaryEmail}`}
-                  className="block font-semibold text-[var(--brand-gold)] hover:underline"
+                  className="block break-all font-semibold text-[var(--brand-gold)] hover:underline"
                 >
                   {SITE_CONFIG.primaryEmail}
                 </a>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                   <a
                     key={email}
                     href={`mailto:${email}`}
-                    className="block text-[var(--text-secondary)] hover:underline"
+                    className="block break-all text-[var(--text-secondary)] hover:underline"
                   >
                     {email}
                   </a>

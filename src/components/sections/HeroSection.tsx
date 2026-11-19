@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       aria-label="Festival Introduction"
-      className="relative flex min-h-[90svh] items-center overflow-x-clip pt-20 pb-12 sm:pt-24 sm:pb-16 lg:min-h-[88svh] lg:pt-24 lg:pb-16"
+      className="relative flex min-h-[88svh] items-center overflow-x-clip pt-16 pb-8 sm:pt-20 sm:pb-12 lg:min-h-[88svh] lg:pt-24 lg:pb-16"
     >
       {/* Zero-Cost Ambient Glow Accents */}
       <div
@@ -53,6 +53,7 @@ export function HeroSection() {
                 width={677}
                 height={677}
                 priority
+                sizes="(max-width: 640px) 140px, (max-width: 1024px) 220px, 340px"
                 className="relative z-10 h-auto w-full object-contain drop-shadow-[0_8px_24px_rgba(216,11,36,0.25)] transition-transform duration-300 ease-out hover:scale-[1.02]"
               />
             </div>
@@ -73,7 +74,7 @@ export function HeroSection() {
             {/* Clear Host Line in solid readable color */}
             <p className="mt-3 max-w-xl text-base leading-relaxed text-[var(--text-secondary)] sm:text-lg">
               A two-day technology and entrepreneurship festival hosted by IEDC at{" "}
-              <span className="font-semibold text-white">{SITE_CONFIG.collegeName}</span>.
+              <span className="font-semibold text-white whitespace-normal break-words">{SITE_CONFIG.collegeName}</span>.
             </p>
 
             {/* Date & Campus Pill Line */}

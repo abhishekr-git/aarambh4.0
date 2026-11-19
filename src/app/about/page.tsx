@@ -40,6 +40,7 @@ export default function AboutPage() {
               width={677}
               height={677}
               priority
+              sizes="(max-width: 640px) 192px, 240px"
               className="h-auto w-48 sm:w-60 object-contain drop-shadow-[0_8px_24px_rgba(216,11,36,0.3)]"
             />
           </div>
