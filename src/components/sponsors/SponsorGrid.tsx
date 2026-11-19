@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ArrowUpRight, Check, Sparkles } from "lucide-react";
-import type { Sponsor, SponsorshipTierPackage } from "@/types";
+import type { Sponsor } from "@/types";
 import { INSTITUTIONAL_PARTNERS, SPONSORSHIP_PACKAGES } from "@/data/sponsors";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 

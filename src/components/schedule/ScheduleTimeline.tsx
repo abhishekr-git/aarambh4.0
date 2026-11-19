@@ -6,7 +6,6 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Calendar, CalendarDays, Clock, Info, MapPin } from "lucide-react";
 import type { ScheduleDay } from "@/types";
 import { SCHEDULE_NOTE } from "@/data/schedule";
-import { SITE_CONFIG } from "@/data/site";
 
 interface ScheduleTimelineProps {
   days: ScheduleDay[];

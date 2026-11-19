@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Calendar, Cpu, Lightbulb, Mail, Sparkles, Trophy, Users, Wrench } from "lucide-react";
+import { Calendar, Cpu, Lightbulb, Mail, Sparkles, Trophy, Wrench } from "lucide-react";
 import type { EventCategoryId, FestivalEvent } from "@/types";
 import { EVENT_CATEGORIES } from "@/data/events";
 import { SITE_CONFIG } from "@/data/site";
