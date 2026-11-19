@@ -86,15 +86,31 @@ export function ScheduleTimeline({ days }: ScheduleTimelineProps) {
         aria-label="Event schedule days"
         className="mb-8 flex flex-wrap justify-center gap-2.5 sm:gap-3"
       >
-        {days.map((day) => {
+        {days.map((day, idx) => {
           const active = day.id === activeDayId;
           return (
             <button
               key={day.id}
+              id={`schedule-tab-${day.id}`}
               type="button"
               role="tab"
               aria-selected={active}
+              tabIndex={active ? 0 : -1}
               onClick={() => setActiveDayId(day.id)}
+              onKeyDown={(e) => {
+                let nextIdx = -1;
+                if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                  nextIdx = (idx + 1) % days.length;
+                } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+                  e.preventDefault();
+                  nextIdx = (idx - 1 + days.length) % days.length;
+                }
+                if (nextIdx >= 0) {
+                  setActiveDayId(days[nextIdx].id);
+                  document.getElementById(`schedule-tab-${days[nextIdx].id}`)?.focus();
+                }
+              }}
               className={`inline-flex min-h-[44px] items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold transition-all sm:text-sm ${
                 active
                   ? "btn-brand text-white"

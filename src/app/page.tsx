@@ -196,7 +196,7 @@ export default function HomePage() {
       </section>
 
       {/* 5. Location & Directions Section */}
-      <section className="border-t border-[var(--border-subtle)] py-16 sm:py-24">
+      <section id="location" className="scroll-mt-24 sm:scroll-mt-28 md:scroll-mt-32 border-t border-[var(--border-subtle)] py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
             kicker="Plan Your Journey"
@@ -235,12 +235,12 @@ export default function HomePage() {
                 <span>View Sponsorship Packages</span>
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
-              <Link
-                href="/contact"
+              <a
+                href="mailto:iedc@ceknpy.ac.in?subject=Aarambh%204.0%20Partnership%20Inquiry"
                 className="btn-outline-glass inline-flex items-center gap-2 rounded-xl px-6 py-3 text-xs font-semibold sm:text-sm"
               >
                 <span>Contact Partnerships Desk</span>
-              </Link>
+              </a>
             </div>
 
             {/* Institutional Backing Logos */}

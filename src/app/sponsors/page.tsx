@@ -15,6 +15,7 @@ export default function SponsorsPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
       <SectionHeading
+        as="h1"
         kicker="Industry &amp; Campus Alliances"
         title="Sponsors &amp;"
         highlight="Partners"
@@ -24,7 +25,8 @@ export default function SponsorsPage() {
       {/* Prominent Partnerships Contact Desk Placed Near Top */}
       <ScrollReveal className="mx-auto mt-10 max-w-4xl">
         <div
-          className="rounded-2xl border border-[var(--brand-primary)]/35 p-6 sm:p-8"
+          id="partnerships-desk"
+          className="scroll-mt-28 rounded-2xl border border-[var(--brand-primary)]/35 p-6 sm:p-8"
           style={{ background: "var(--gradient-surface)" }}
         >
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">

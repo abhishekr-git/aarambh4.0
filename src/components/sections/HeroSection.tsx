@@ -14,7 +14,7 @@ export function HeroSection() {
   return (
     <section
       aria-label="Festival Introduction"
-      className="relative flex items-center overflow-x-clip pt-20 pb-10 sm:pt-24 sm:pb-12 min-[900px]:pt-28 min-[900px]:pb-14"
+      className="relative flex items-center overflow-x-clip pt-20 pb-10 sm:pt-24 sm:pb-12 md:pt-28 md:pb-14"
     >
       {/* Ambient Glow Concentrated Around the Left Emblem Column */}
       <div
@@ -27,15 +27,15 @@ export function HeroSection() {
       />
 
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-8 min-[900px]:grid-cols-12 min-[900px]:gap-12">
-          {/* Emblem Column: Compact on mobile, spacious and prominent on desktop-width viewports (>=900px) */}
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-8 lg:gap-12">
+          {/* Emblem Column: Switches to side-by-side at md (768px), independent of navbar */}
           <motion.div
             initial={prefersReduced ? false : { opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center justify-center min-[900px]:col-span-5"
+            className="flex flex-col items-center justify-center md:col-span-5"
           >
-            <div className="relative flex w-full max-w-[140px] items-center justify-center sm:max-w-[180px] min-[900px]:max-w-[340px]">
+            <div className="relative flex w-full max-w-[140px] items-center justify-center sm:max-w-[180px] md:max-w-[260px] lg:max-w-[340px]">
               {/* Subtle emblem rim glow */}
               <div
                 className="pointer-events-none absolute -inset-6 rounded-full opacity-60"
@@ -51,7 +51,7 @@ export function HeroSection() {
                 width={677}
                 height={677}
                 priority
-                sizes="(max-width: 640px) 140px, (max-width: 899px) 180px, 340px"
+                sizes="(max-width: 640px) 140px, (max-width: 767px) 180px, (max-width: 1023px) 260px, 340px"
                 className="relative z-10 h-auto w-full object-contain drop-shadow-[0_8px_24px_rgba(216,11,36,0.25)] transition-transform duration-300 ease-out hover:scale-[1.02]"
               />
             </div>
@@ -62,7 +62,7 @@ export function HeroSection() {
             initial={prefersReduced ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-start text-left min-[900px]:col-span-7"
+            className="flex flex-col items-start text-left md:col-span-7"
           >
             {/* H1: Aarambh 4.0 */}
             <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -101,7 +101,7 @@ export function HeroSection() {
               {HAS_PUBLISHED_EVENTS ? (
                 <Link
                   href="/events"
-                  className="btn-brand inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold sm:text-base shadow-lg shadow-[var(--brand-primary)]/20"
+                  className="btn-brand inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold sm:text-base"
                 >
                   <span>Explore events</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -109,7 +109,7 @@ export function HeroSection() {
               ) : (
                 <Link
                   href="#location"
-                  className="btn-brand inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold sm:text-base shadow-lg shadow-[var(--brand-primary)]/25"
+                  className="btn-brand inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold sm:text-base"
                 >
                   <span>Plan your visit</span>
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />

@@ -13,6 +13,7 @@ export default function GalleryPage() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
       <SectionHeading
+        as="h1"
         kicker="Visual Archive"
         title="Festival"
         highlight="Gallery"

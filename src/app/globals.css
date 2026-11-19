@@ -111,19 +111,21 @@ h1, h2, h3, h4, h5, h6 {
   background: linear-gradient(150deg, rgba(42, 23, 19, 0.88) 0%, rgba(22, 13, 12, 0.96) 100%);
 }
 
-/* Primary Action Button — High Contrast & Tactile */
+/* Primary Action Button — High Contrast (WCAG 2.2 AA compliant > 4.5:1) & Tactile */
 .btn-brand {
-  background: var(--gradient-brand);
+  background: linear-gradient(135deg, #a50c18 0%, #b8091d 60%, #c41808 100%);
+  border: 1px solid rgba(255, 184, 0, 0.45);
+  box-shadow: 0 4px 18px rgba(165, 12, 24, 0.38), inset 0 1px 0 rgba(255, 215, 0, 0.35);
   color: #ffffff;
   font-weight: 700;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
-  box-shadow: 0 4px 18px var(--glow-primary);
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, opacity 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-brand:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(245, 93, 5, 0.48);
+  border-color: rgba(255, 184, 0, 0.8);
+  box-shadow: 0 6px 24px rgba(184, 9, 29, 0.5), inset 0 1px 0 rgba(255, 215, 0, 0.65);
 }
 
 .btn-brand:active {

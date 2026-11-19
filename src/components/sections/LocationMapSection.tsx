@@ -1,14 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Bus, ExternalLink, MapPin, Train } from "lucide-react";
 import { SITE_CONFIG, TRAVEL_ROUTES } from "@/data/site";
 
 export function LocationMapSection() {
   const [mode, setMode] = useState<"bus" | "train">("bus");
+  const busTabRef = useRef<HTMLButtonElement>(null);
+  const trainTabRef = useRef<HTMLButtonElement>(null);
+
+  const handleTabKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      if (mode === "bus") {
+        setMode("train");
+        trainTabRef.current?.focus();
+      } else {
+        setMode("bus");
+        busTabRef.current?.focus();
+      }
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      if (mode === "train") {
+        setMode("bus");
+        busTabRef.current?.focus();
+      } else {
+        setMode("train");
+        trainTabRef.current?.focus();
+      }
+    }
+  };
 
   return (
-    <div id="location" className="scroll-mt-20 space-y-6 sm:scroll-mt-24 sm:space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Map + Campus Address Block */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         {/* Address & Direct Actions */}
@@ -69,10 +93,15 @@ export function LocationMapSection() {
           </div>
           <div role="tablist" aria-label="Transit modes" className="flex w-full gap-2 sm:w-auto">
             <button
+              ref={busTabRef}
               type="button"
               role="tab"
+              id="tab-bus"
+              aria-controls="transit-panel"
               aria-selected={mode === "bus"}
+              tabIndex={mode === "bus" ? 0 : -1}
               onClick={() => setMode("bus")}
+              onKeyDown={handleTabKeyDown}
               className={`inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all sm:flex-none sm:text-sm ${
                 mode === "bus"
                   ? "btn-brand text-white"
@@ -83,10 +112,15 @@ export function LocationMapSection() {
               <span>By Bus</span>
             </button>
             <button
+              ref={trainTabRef}
               type="button"
               role="tab"
+              id="tab-train"
+              aria-controls="transit-panel"
               aria-selected={mode === "train"}
+              tabIndex={mode === "train" ? 0 : -1}
               onClick={() => setMode("train")}
+              onKeyDown={handleTabKeyDown}
               className={`inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2 text-xs font-bold transition-all sm:flex-none sm:text-sm ${
                 mode === "train"
                   ? "btn-brand text-white"
@@ -99,7 +133,12 @@ export function LocationMapSection() {
           </div>
         </div>
 
-        {mode === "bus" ? (
+        <div
+          id="transit-panel"
+          role="tabpanel"
+          aria-labelledby={mode === "bus" ? "tab-bus" : "tab-train"}
+        >
+          {mode === "bus" ? (
           <div className="mt-5 grid grid-cols-1 gap-4 md:grid-cols-2">
             {TRAVEL_ROUTES.bus.map((group) => (
               <div
@@ -172,6 +211,7 @@ export function LocationMapSection() {
             </div>
           </div>
         )}
+        </div>
       </div>
     </div>
   );

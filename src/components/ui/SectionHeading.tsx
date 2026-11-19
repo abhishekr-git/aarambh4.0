@@ -1,6 +1,7 @@
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 interface SectionHeadingProps {
+  as?: "h1" | "h2";
   kicker?: string;
   title: string;
   highlight?: string;
@@ -10,6 +11,7 @@ interface SectionHeadingProps {
 }
 
 export function SectionHeading({
+  as = "h2",
   kicker,
   title,
   highlight,
@@ -19,6 +21,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   const alignClasses = align === "center" ? "text-center mx-auto" : "text-left";
   const fullAccessibleTitle = highlight ? `${title} ${highlight}` : title;
+  const HeadingTag = as;
 
   return (
     <ScrollReveal className={`max-w-3xl ${alignClasses} ${className}`}>
@@ -28,7 +31,7 @@ export function SectionHeading({
           {kicker}
         </span>
       )}
-      <h2
+      <HeadingTag
         className="text-2xl font-bold tracking-tight sm:text-3xl lg:text-4xl text-white"
         aria-label={fullAccessibleTitle}
       >
@@ -39,7 +42,7 @@ export function SectionHeading({
             <span className="gradient-text">{highlight}</span>
           </>
         )}
-      </h2>
+      </HeadingTag>
       {subtitle && (
         <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base sm:leading-relaxed">
           {subtitle}

@@ -13,6 +13,7 @@ export default function SchedulePage() {
   return (
     <div className="mx-auto max-w-7xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
       <SectionHeading
+        as="h1"
         kicker={`${SITE_CONFIG.datesShort} • Festival Blueprint`}
         title="Event"
         highlight="Schedule"

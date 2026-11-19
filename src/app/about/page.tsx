@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Award, Compass, ExternalLink, Flame, Lightbulb, Users } from "lucide-react";
+import { ArrowRight, Award, Compass, ExternalLink, Flame, Lightbulb, Sparkles, Users } from "lucide-react";
 import {
   FESTIVAL_METRICS,
   IEDC_PROFILE,
@@ -24,6 +24,7 @@ export default function AboutPage() {
     <div className="mx-auto max-w-7xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
       {/* 1. Header: The Festival First */}
       <SectionHeading
+        as="h1"
         kicker="Our Identity &amp; Purpose"
         title="About"
         highlight="Aarambh 4.0"
@@ -140,7 +141,66 @@ export default function AboutPage() {
         </ScrollReveal>
       </div>
 
-      {/* 4. The Host & Chapter: IEDC CEKNPY & College Details */}
+      {/* 4. Previous Edition Spotlight: What Students Made at Aarambh */}
+      <ScrollReveal className="mt-16">
+        <div className="glass-card relative overflow-hidden rounded-3xl border border-[var(--border-strong)]/40 p-6 sm:p-8 lg:p-10">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10">
+            {/* Visual: KrishiSense Hardware Blueprint */}
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-black/40 lg:col-span-6">
+              <Image
+                src="/images/placeholders/prayatna-prototype.svg"
+                alt="KrishiSense IoT Soil Telemetry Node engineered by CEK students at Aarambh 3.0"
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Story & Technical Breakdown */}
+            <div className="space-y-4 lg:col-span-6">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--brand-gold)]/30 bg-[var(--brand-gold)]/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--brand-gold)]">
+                  <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                  Aarambh 3.0 Maker Spotlight
+                </span>
+                <span className="text-xs text-[var(--text-muted)]">Prayatna 24h Hackathon</span>
+              </div>
+
+              <h2 className="text-xl font-bold text-white sm:text-2xl">
+                What Students Made: <span className="gradient-text">KrishiSense IoT</span>
+              </h2>
+
+              <p className="text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
+                During the 24-hour Prayatna Hackathon at Aarambh 3.0, a multidisciplinary team of undergraduate engineers from CEK tackled coastal soil salinity and water management for local growers in Karunagappally.
+              </p>
+
+              <div className="space-y-2 rounded-xl border border-[var(--border-subtle)] bg-black/30 p-4 text-xs text-[var(--text-secondary)] sm:text-sm">
+                <p className="font-semibold text-white">The Working Prototype:</p>
+                <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-secondary)]" aria-hidden="true" />
+                    <span><strong className="text-white">Custom ESP32 Node:</strong> Hand-soldered carrier board with 5V solar trickle charging and multi-probe NPK telemetry.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-secondary)]" aria-hidden="true" />
+                    <span><strong className="text-white">3.2km LoRa Telemetry:</strong> Transmits real-time crop moisture readings directly across campus without cellular connectivity.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-secondary)]" aria-hidden="true" />
+                    <span><strong className="text-white">Measured Impact:</strong> Automated solenoid valve control demonstrated a 42% reduction in irrigation water runoff during live testing.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <p className="text-xs italic text-[var(--brand-gold)]">
+                &ldquo;Aarambh gave us the 24-hour maker space, tools, and mentor feedback to take an idea from napkin schematic to a live field device before sunrise.&rdquo;
+              </p>
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* 5. The Host & Chapter: IEDC CEKNPY & College Details */}
       <div className="mt-16 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <ScrollReveal>
           <div className="glass-card flex h-full flex-col justify-between rounded-2xl p-6 sm:p-8">
@@ -213,7 +273,7 @@ export default function AboutPage() {
         </ScrollReveal>
       </div>
 
-      {/* 5. Key Verified Chapter Milestones */}
+      {/* 6. Key Verified Chapter Milestones */}
       <ScrollReveal className="mt-12">
         <div className="glass-card rounded-2xl p-6 sm:p-8">
           <div className="mb-4 flex items-center gap-2 text-[var(--brand-gold)]">
