@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Mail, Phone } from "lucide-react";
-import { SPONSORS, SPONSORSHIP_CONTACTS } from "@/data/sponsors";
+import { Mail, Phone, Sparkles } from "lucide-react";
+import { INSTITUTIONAL_PARTNERS, SPONSORSHIP_CONTACTS } from "@/data/sponsors";
 import { SITE_CONFIG } from "@/data/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SponsorGrid } from "@/components/sponsors/SponsorGrid";
@@ -8,68 +8,85 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Sponsors & Partners",
-  description: `Institutional partners and sponsorship opportunities for ${SITE_CONFIG.name} (${SITE_CONFIG.datesDisplay}) at ${SITE_CONFIG.collegeName}.`,
+  description: `Partner with ${SITE_CONFIG.name} (${SITE_CONFIG.datesDisplay}) at ${SITE_CONFIG.collegeName}. View sponsorship tiers and partnerships contacts.`,
 };
 
 export default function SponsorsPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 pt-32 pb-24 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
       <SectionHeading
-        kicker="Partnerships"
-        title="Sponsors &"
+        kicker="Industry &amp; Campus Alliances"
+        title="Sponsors &amp;"
         highlight="Partners"
-        subtitle="Partner with IEDC CEK to connect your brand with 1,000+ student engineers, developers, designers, and founders across Kerala."
+        subtitle="Partner with IEDC CEK to connect your brand with 1,000+ student engineers, developers, and makers across Kerala on January 15–16, 2027."
       />
 
-      <div className="mt-14">
-        <SponsorGrid sponsors={SPONSORS} />
-      </div>
-
-      {/* Sponsorship Inquiry Box */}
-      <ScrollReveal className="mx-auto mt-16 max-w-3xl">
+      {/* Prominent Partnerships Contact Desk Placed Near Top */}
+      <ScrollReveal className="mx-auto mt-10 max-w-4xl">
         <div
-          className="rounded-3xl border border-[var(--brand-primary)]/40 p-8 text-center sm:p-10"
+          className="rounded-2xl border border-[var(--brand-primary)]/35 p-6 sm:p-8"
           style={{ background: "var(--gradient-surface)" }}
         >
-          <h2 className="text-2xl font-extrabold text-white sm:text-3xl">
-            Interested in Sponsoring or Hosting a Stall?
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[var(--text-secondary)]">
-            Reach out to our partnerships desk for the official Aarambh 4.0 sponsorship brochure,
-            custom tier packages, or campus expo stall bookings.
-          </p>
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+            <div>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--brand-gold)]/30 bg-[var(--brand-gold)]/10 px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-[var(--brand-gold)]">
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                Direct Desk
+              </span>
+              <h3 className="mt-2 text-xl font-bold text-white sm:text-2xl">
+                Connect with our Partnerships Team
+              </h3>
+              <p className="mt-1 text-xs text-[var(--text-secondary)] sm:text-sm">
+                Discuss custom sponsor packages, campus arena naming, hackathon tracks, or company stall spaces.
+              </p>
+            </div>
+            <a
+              href="mailto:iedc@ceknpy.ac.in?subject=Aarambh%204.0%20Partnership%20Inquiry"
+              className="btn-brand inline-flex shrink-0 items-center gap-2 rounded-xl px-5 py-3 text-xs font-bold sm:text-sm"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              <span>Email Partnerships Desk</span>
+            </a>
+          </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-4 text-left sm:grid-cols-2">
+          <div className="mt-6 grid grid-cols-1 gap-4 border-t border-[var(--border-subtle)] pt-5 sm:grid-cols-2">
             {SPONSORSHIP_CONTACTS.map((contact) => (
               <div
                 key={contact.name}
-                className="rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-primary)]/70 p-4"
+                className="rounded-xl border border-[var(--border-subtle)] bg-black/30 p-4"
               >
-                <p className="font-bold text-white">{contact.name}</p>
+                <p className="text-sm font-bold text-white">{contact.name}</p>
                 <p className="text-xs text-[var(--text-muted)]">{contact.role}</p>
-                {contact.phone && (
-                  <a
-                    href={`tel:${contact.phone.replace(/\s+/g, "")}`}
-                    className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-secondary)] hover:underline"
-                  >
-                    <Phone className="h-4 w-4" />
-                    <span>{contact.phone}</span>
-                  </a>
-                )}
-                {contact.email && (
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-[var(--brand-secondary)] hover:underline"
-                  >
-                    <Mail className="h-4 w-4" />
-                    <span>{contact.email}</span>
-                  </a>
-                )}
+                <div className="mt-2.5 flex flex-wrap gap-3">
+                  {contact.phone && (
+                    <a
+                      href={`tel:${contact.phone.replace(/\s+/g, "")}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--brand-secondary)] hover:underline"
+                    >
+                      <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span>{contact.phone}</span>
+                    </a>
+                  )}
+                  {contact.email && (
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--brand-secondary)] hover:underline"
+                    >
+                      <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                      <span>{contact.email}</span>
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </ScrollReveal>
+
+      {/* Structured Sponsors & Tiers Grid */}
+      <div className="mt-14 sm:mt-16">
+        <SponsorGrid sponsors={INSTITUTIONAL_PARTNERS} />
+      </div>
     </div>
   );
 }

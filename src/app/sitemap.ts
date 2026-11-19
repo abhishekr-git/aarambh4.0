@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_CONFIG } from "@/data/site";
-import { EVENTS } from "@/data/events";
+import { getPublishedEvents } from "@/data/events";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1 : 0.8,
   }));
 
-  const eventRoutes = EVENTS.map((event) => ({
+  const eventRoutes = getPublishedEvents().map((event) => ({
     url: `${SITE_CONFIG.siteUrl}/events/${event.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,

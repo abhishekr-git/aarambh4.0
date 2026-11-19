@@ -16,41 +16,44 @@ export interface EventCoordinator {
   name: string;
   role: string;
   phone?: string;
+  email?: string;
 }
 
 export interface FestivalEvent {
   slug: string;
   title: string;
-  shortTitle: string;
+  shortTitle?: string;
   category: Exclude<EventCategoryId, "all">;
   categoryLabel: string;
-  tagline: string;
+  tagline?: string;
   description: string;
-  longDescription: string[];
+  longDescription?: string[];
   day: "Day 1" | "Day 2" | "Day 1 & 2";
   dateLabel: string;
-  duration: string;
-  venue: string;
-  teamSize: string;
-  feeLabel: string;
-  prizePoolLabel: string;
-  posterImage: string;
-  highlights: string[];
-  rules: string[];
-  registrationUrl: string | null;
+  duration?: string;
+  venue?: string;
+  teamSize?: string;
+  feeLabel?: string;
+  prizePoolLabel?: string;
+  posterImage?: string;
+  highlights?: string[];
+  rules?: string[];
+  registrationUrl?: string | null;
   registrationStatus: "open" | "coming-soon" | "closed";
   featured?: boolean;
-  coordinators: EventCoordinator[];
+  published?: boolean;
+  coordinators?: EventCoordinator[];
 }
 
 export interface ScheduleItem {
   id: string;
   time: string;
   title: string;
-  description: string;
-  venue: string;
+  description?: string;
+  venue?: string;
   category: "ceremony" | "hackathon" | "competition" | "workshop" | "expo" | "entertainment";
   eventSlug?: string;
+  published?: boolean;
 }
 
 export interface ScheduleDay {
@@ -58,7 +61,7 @@ export interface ScheduleDay {
   label: string;
   shortLabel: string;
   date: string;
-  theme: string;
+  theme?: string;
   items: ScheduleItem[];
 }
 
@@ -73,6 +76,15 @@ export interface Sponsor {
   website?: string;
   description: string;
   isPlaceholder?: boolean;
+}
+
+export interface SponsorshipTierPackage {
+  id: SponsorTier;
+  name: string;
+  tagline: string;
+  slots: string;
+  deliverables: string[];
+  idealFor: string;
 }
 
 export interface TeamMember {
@@ -95,7 +107,8 @@ export interface GalleryItem {
   category: "Hackathon" | "Robotics" | "Workshops" | "Expos" | "Stage & Culture";
   caption: string;
   image: string;
-  aspect: "landscape" | "portrait" | "wide";
+  aspect?: "landscape" | "portrait" | "wide";
+  published?: boolean;
 }
 
 export interface FAQItem {

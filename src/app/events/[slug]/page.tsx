@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { EVENTS, getEventBySlug } from "@/data/events";
+import { getEventBySlug, getPublishedEvents } from "@/data/events";
 import { SITE_CONFIG } from "@/data/site";
 import { EventDetails } from "@/components/events/EventDetails";
 
@@ -9,7 +9,7 @@ interface EventPageProps {
 }
 
 export function generateStaticParams() {
-  return EVENTS.map((event) => ({ slug: event.slug }));
+  return getPublishedEvents().map((event) => ({ slug: event.slug }));
 }
 
 export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
@@ -20,12 +20,12 @@ export async function generateMetadata({ params }: EventPageProps): Promise<Meta
   }
 
   return {
-    title: event.title,
+    title: `${event.title} | ${SITE_CONFIG.name}`,
     description: `${event.description} — ${SITE_CONFIG.name} (${event.dateLabel}) at ${SITE_CONFIG.collegeName}.`,
     openGraph: {
       title: `${event.title} | ${SITE_CONFIG.name}`,
       description: event.description,
-      images: [event.posterImage],
+      images: event.posterImage ? [event.posterImage] : [SITE_CONFIG.assets.logoFull],
     },
   };
 }

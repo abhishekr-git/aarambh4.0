@@ -1,15 +1,16 @@
-import type { PreviousHighlight, SocialLink } from "@/types";
+import type { SocialLink } from "@/types";
 
 export const SITE_CONFIG = {
-  name: "AARAMBH 4.0",
+  name: "Aarambh 4.0",
   shortName: "Aarambh 4.0",
   edition: "4th Edition",
   tagline: "Imagine. Innovate. Integrate.",
   heroSubtitle:
-    "The flagship annual technology, entrepreneurship, and innovation festival organised by IEDC CEKNPY at College of Engineering Karunagappally, Kerala.",
+    "A two-day technology and entrepreneurship festival hosted by IEDC at College of Engineering Karunagappally.",
   datesDisplay: "January 15–16, 2027",
   datesShort: "Jan 15–16, 2027",
   startDateIso: "2027-01-15T09:00:00+05:30",
+  endDateIso: "2027-01-16T20:00:00+05:30",
   siteUrl: "https://aarambh26.tech",
   organizer: "Innovation & Entrepreneurship Development Centre (IEDC CEKNPY)",
   collegeName: "College of Engineering Karunagappally",
@@ -33,7 +34,7 @@ export const SITE_CONFIG = {
     providerName: "Official Registration Portal",
     generalPassUrl: null as string | null,
     stallsFormUrl: null as string | null,
-    note: "Official Aarambh 4.0 registration portal and fee structure will be announced soon.",
+    note: "Event lineup and registration details will be announced here.",
   },
   assets: {
     logoFull: "/images/logo.png",
@@ -46,7 +47,7 @@ export const SITE_CONFIG = {
 export const IEDC_PROFILE = {
   chapterName: "IEDC CEKNPY",
   history:
-    "Established under the aegis of Kerala Startup Mission (KSUM) and College of Engineering Karunagappally, IEDC CEKNPY has grown into a premier innovation hub in Kollam district. Over the past 8+ years, our chapter has incubated 18+ registered startups, secured government seed grants, and fostered a vibrant maker culture.",
+    "Established under the aegis of Kerala Startup Mission (KSUM) and College of Engineering Karunagappally, IEDC CEKNPY has grown into a premier innovation hub in Kollam district. Over the past 8+ years, our chapter has incubated student startups, secured government seed grants, and fostered a vibrant maker culture.",
   mission:
     "To cultivate an entrepreneurial ecosystem within CEKNPY by encouraging innovation, providing prototype funding, offering expert mentorship, and transforming technical ideas into scalable, market-ready enterprises.",
   vision:
@@ -91,77 +92,42 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const FESTIVAL_METRICS = [
-  { value: 1000, suffix: "+", label: "Expected Footfall" },
-  { value: 50, suffix: "+", label: "Ideas Incubated by IEDC" },
-  { value: 100, suffix: "+", label: "Active IEDC Builders" },
-  { value: 2, suffix: " Days", label: "Jan 15–16, 2027" },
+  { value: 1000, suffix: "+", label: "Expected Footfall", context: "Aarambh 4.0 projection" },
+  { value: 2, suffix: " Days", label: "Jan 15–16, 2027", context: "Festival duration" },
+  { value: 18, suffix: "+", label: "Startups Incubated", context: "IEDC CEKNPY track record" },
+  { value: 15, suffix: "+ Lakhs", label: "Grants Disbursed", context: "Student seed funding" },
 ] as const;
-
-export const PREVIOUS_EDITION_HIGHLIGHTS: PreviousHighlight[] = [
-  {
-    id: "highlight-1",
-    edition: "Previous Edition",
-    title: "Highlight 1",
-    metric: "Coming Soon",
-    description:
-      "Placeholder for previous edition highlight. Replace with curated stats and photos from past Aarambh editions.",
-  },
-  {
-    id: "highlight-2",
-    edition: "Previous Edition",
-    title: "Highlight 2",
-    metric: "Coming Soon",
-    description:
-      "Placeholder for previous edition highlight. Replace with curated stats and photos from past Aarambh editions.",
-  },
-  {
-    id: "highlight-3",
-    edition: "Previous Edition",
-    title: "Highlight 3",
-    metric: "Coming Soon",
-    description:
-      "Placeholder for previous edition highlight. Replace with curated stats and photos from past Aarambh editions.",
-  },
-  {
-    id: "highlight-4",
-    edition: "Previous Edition",
-    title: "Highlight 4",
-    metric: "Coming Soon",
-    description:
-      "Placeholder for previous edition highlight. Replace with curated stats and photos from past Aarambh editions.",
-  },
-];
 
 export const TRAVEL_ROUTES = {
   bus: [
     {
-      origin: "From Karunagappally",
+      origin: "From Karunagappally Town",
       options: [
         {
           title: "Via Driver Junction",
           steps: [
-            "Karunagappally → Driver Junction: 2.7 km (~10 min)",
+            "Karunagappally KSRTC / Bus Stand → Driver Junction: 2.7 km (~10 min)",
             "Driver Junction → CEK Campus: 1.5 km (Auto: 5 min | Walk: 15 min)",
           ],
         },
         {
           title: "Via Veluthamanal",
-          badge: "Limited Buses",
+          badge: "Direct Route",
           steps: [
             "Karunagappally → Veluthamanal: 3.5 km (~15 min)",
-            "Veluthamanal → CEK Campus: 1 km (Walk: 5 min)",
+            "Veluthamanal → CEK Campus: 1 km (Walk: 5–8 min)",
           ],
         },
       ],
     },
     {
-      origin: "From Bharanikkavu",
+      origin: "From Bharanikkavu / Kayamkulam",
       options: [
         {
           title: "Via Driver Junction",
           steps: [
-            "Bharanikkavu → Driver Junction: 14 km (~40 min)",
-            "Driver Junction → CEK Campus: 1.5 km (Auto: 5 min | Walk: 15 min)",
+            "Bharanikkavu → Driver Junction: 14 km (~40 min by bus)",
+            "Driver Junction → CEK Campus: 1.5 km (Auto: 5 min)",
           ],
         },
         {
@@ -179,14 +145,15 @@ export const TRAVEL_ROUTES = {
     distance: "Approx. 2 km from CEK Campus",
     options: [
       {
-        title: "Direct Auto-Rickshaw",
-        steps: ["Railway Station → CEK Campus: 2 km (~5 min by auto)"],
+        title: "Direct Auto-Rickshaw from Station",
+        badge: "Recommended",
+        steps: ["Railway Station auto stand → CEK Campus gate: ~2 km (5–7 min, standard fare)"],
       },
       {
-        title: "Via Veluthamanal",
+        title: "Via Veluthamanal Junction",
         steps: [
-          "Station → Veluthamanal: 1 km (~3 min)",
-          "Veluthamanal → CEK Campus: 1 km (Walk: 5 min)",
+          "Station → Veluthamanal Junction: 1 km (~3 min auto)",
+          "Veluthamanal → CEK Campus: 1 km (Walk: 5–8 min)",
         ],
       },
     ],

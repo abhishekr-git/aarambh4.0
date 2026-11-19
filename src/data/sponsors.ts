@@ -1,6 +1,6 @@
-import type { Sponsor } from "@/types";
+import type { Sponsor, SponsorshipTierPackage } from "@/types";
 
-export const SPONSORS: Sponsor[] = [
+export const INSTITUTIONAL_PARTNERS: Sponsor[] = [
   {
     id: "ksum-iedc",
     name: "Kerala Startup Mission — IEDC",
@@ -9,7 +9,7 @@ export const SPONSORS: Sponsor[] = [
     logo: "/images/ksum-iedc-logo-light.svg",
     website: "https://startupmission.kerala.gov.in",
     description:
-      "State-level nodal agency fostering student innovation and entrepreneurship across Kerala campuses.",
+      "State nodal agency fostering student innovation, seed funding, and entrepreneurship culture across Kerala higher education institutions.",
   },
   {
     id: "iedc-cek",
@@ -19,73 +19,84 @@ export const SPONSORS: Sponsor[] = [
     logo: "/images/iedc-logo-light.svg",
     website: "https://college-iedc-website.vercel.app/",
     description:
-      "Official Innovation & Entrepreneurship Development Centre chapter of College of Engineering Karunagappally.",
+      "The student innovation chapter driving Aarambh 4.0, technical prototyping, pre-incubation, and startup mentoring at CEKNPY.",
+  },
+];
+
+export const SPONSORSHIP_PACKAGES: SponsorshipTierPackage[] = [
+  {
+    id: "title",
+    name: "Title Sponsor",
+    tagline: "Exclusive headline partner of Aarambh 4.0",
+    slots: "1 Slot Available",
+    idealFor: "Industry leaders seeking top-tier visibility and campus recruitment dominance across Kerala.",
+    deliverables: [
+      "Headline branding: 'Aarambh 4.0 presented by [Your Brand]'",
+      "Primary placement across main stage, entrance arches, badge lanyards, and festival merch",
+      "Keynote speaking opportunity at the Inaugural Ceremony",
+      "Dedicated prime expo space in the central campus quadrangle",
+      "Direct outreach to 1,000+ student participants and verified participant talent pool access",
+    ],
   },
   {
-    id: "title-slot",
-    name: "Title Partner — Slot Open",
-    tier: "title",
-    tierLabel: "Title Sponsor",
-    description:
-      "Lead festival branding across main stage, competition arenas, digital media, and campus installations.",
-    isPlaceholder: true,
+    id: "gold",
+    name: "Gold Partner",
+    tagline: "Track or competition headline partner",
+    slots: "Limited Slots Available",
+    idealFor: "Tech companies, product startups, and engineering firms seeking focused developer engagement.",
+    deliverables: [
+      "Exclusive co-branding for a marquee track (Hackathon, Robowar, or AI Challenge)",
+      "Standard campus exhibition booth for product demos and talent interaction",
+      "Seat on the official competition judging panel",
+      "Prominent logo placement on festival collateral, website, and winner certificates",
+      "Distribution of company swag and recruitment materials in participant kits",
+    ],
   },
   {
-    id: "gold-slot-1",
-    name: "Gold Partner — Slot Open",
-    tier: "gold",
-    tierLabel: "Gold Sponsor",
-    description:
-      "Track co-branding, dedicated campus expo booth, and direct talent engagement with 1,000+ students.",
-    isPlaceholder: true,
+    id: "silver",
+    name: "Silver Partner",
+    tagline: "Technical workshop & session supporter",
+    slots: "Open",
+    idealFor: "Regional businesses, edtech academies, and developer tool platforms.",
+    deliverables: [
+      "Co-hosting rights for one hands-on technical workshop or masterclass",
+      "Logo branding on website partners wall, festival roll-ups, and screen backdrops",
+      "Social media feature across official IEDC CEKNPY digital channels",
+      "Festival delegate passes and networking access with student founders",
+    ],
   },
   {
-    id: "gold-slot-2",
-    name: "Gold Partner — Slot Open",
-    tier: "gold",
-    tierLabel: "Gold Sponsor",
-    description:
-      "Workshop or competition partnership with jury representation and prominent festival visibility.",
-    isPlaceholder: true,
+    id: "community",
+    name: "Community & Media Partner",
+    tagline: "Ecosystem collaboration & outreach",
+    slots: "Open",
+    idealFor: "Student developer clubs, open-source communities, and regional tech networks.",
+    deliverables: [
+      "Cross-promotional digital reach across 20+ college networks",
+      "Community partner badge on the official festival website",
+      "Reserved seats for community delegates at keynote talks and showcases",
+    ],
   },
-  {
-    id: "silver-slot-1",
-    name: "Silver Partner — Slot Open",
-    tier: "silver",
-    tierLabel: "Silver Sponsor",
-    description:
-      "Brand presence across festival collaterals, website, and exhibition zones.",
-    isPlaceholder: true,
-  },
-  {
-    id: "silver-slot-2",
-    name: "Silver Partner — Slot Open",
-    tier: "silver",
-    tierLabel: "Silver Sponsor",
-    description:
-      "Ideal for regional tech companies, academies, and developer tool providers.",
-    isPlaceholder: true,
-  },
-  {
-    id: "community-slot-1",
-    name: "Community & Campus Partners",
-    tier: "community",
-    tierLabel: "Community Partner",
-    description:
-      "Student developer clubs, design communities, and IEDC chapters collaborating across Kerala.",
-    isPlaceholder: true,
-  },
+];
+
+/**
+ * Combined list kept for backwards-compatibility with existing sponsor components.
+ */
+export const SPONSORS: Sponsor[] = [
+  ...INSTITUTIONAL_PARTNERS,
 ];
 
 export const SPONSORSHIP_CONTACTS = [
   {
-    name: "Nodal Officer — Renjith S R",
+    name: "Renjith S R",
     role: "Faculty Nodal Officer, IEDC CEKNPY",
     phone: "+91 98954 21367",
+    email: "iedc@ceknpy.ac.in",
   },
   {
     name: "IEDC CEKNPY Partnerships Desk",
-    role: "Sponsorships & Stalls Coordination",
+    role: "Sponsorship, Stalls & Industry Alliances",
     email: "iedc@ceknpy.ac.in",
+    notes: "Direct inquiries for tier decks, custom engagements, and student booth bookings.",
   },
 ];

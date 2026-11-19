@@ -5,13 +5,16 @@ import {
   Calendar,
   CheckCircle2,
   Clock,
+  Mail,
   MapPin,
+  Phone,
   ShieldAlert,
   Trophy,
   Users,
   Wallet,
 } from "lucide-react";
 import type { FestivalEvent } from "@/types";
+import { SITE_CONFIG } from "@/data/site";
 import { RegistrationCTA } from "@/components/ui/RegistrationCTA";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 
@@ -20,167 +23,218 @@ interface EventDetailsProps {
 }
 
 export function EventDetails({ event }: EventDetailsProps) {
+  // Dynamically filter specs so missing/undefined fields never generate empty rows
   const quickSpecs = [
     { icon: Calendar, label: "Date", value: event.dateLabel },
-    { icon: Clock, label: "Duration", value: event.duration },
-    { icon: MapPin, label: "Venue", value: event.venue },
-    { icon: Users, label: "Team Size", value: event.teamSize },
-    { icon: Wallet, label: "Registration Fee", value: event.feeLabel },
-    { icon: Trophy, label: "Rewards", value: event.prizePoolLabel },
-  ];
+    event.duration ? { icon: Clock, label: "Duration", value: event.duration } : null,
+    event.venue ? { icon: MapPin, label: "Venue", value: event.venue } : null,
+    event.teamSize ? { icon: Users, label: "Team Format", value: event.teamSize } : null,
+    event.feeLabel ? { icon: Wallet, label: "Registration Fee", value: event.feeLabel } : null,
+    event.prizePoolLabel ? { icon: Trophy, label: "Prizes & Rewards", value: event.prizePoolLabel } : null,
+  ].filter(Boolean) as { icon: React.ComponentType<{ className?: string }>; label: string; value: string }[];
+
+  const hasHighlights = event.highlights && event.highlights.length > 0;
+  const hasRules = event.rules && event.rules.length > 0;
+  const hasCoordinators = event.coordinators && event.coordinators.length > 0;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 pt-24 pb-20 sm:px-6 lg:px-8">
       {/* Back breadcrumb */}
       <Link
         href="/events"
-        className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--brand-secondary)]"
+        className="mb-6 inline-flex items-center gap-2 text-xs font-semibold text-[var(--text-secondary)] transition-colors hover:text-[var(--brand-secondary)] sm:text-sm"
       >
-        <ArrowLeft className="h-4 w-4" />
+        <ArrowLeft className="h-4 w-4" aria-hidden="true" />
         <span>Back to All Events</span>
       </Link>
 
-      {/* Top Grid */}
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-        {/* Main Column */}
+      {/* Main Grid */}
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+        {/* Left / Main Column */}
         <div className="lg:col-span-7">
           <ScrollReveal>
-            <div className="mb-4 flex flex-wrap items-center gap-2.5">
-              <span className="rounded-full border border-[var(--brand-primary)]/40 bg-[var(--brand-primary)]/14 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-[var(--brand-secondary)]">
+            <div className="mb-3.5 flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-[var(--brand-primary)]/40 bg-[var(--brand-primary)]/12 px-3 py-0.5 text-xs font-bold uppercase tracking-wider text-[var(--brand-secondary)]">
                 {event.categoryLabel}
               </span>
-              <span className="rounded-full border border-[var(--border-subtle)] bg-white/5 px-3.5 py-1 text-xs font-bold text-[var(--brand-gold)]">
+              <span className="rounded-full border border-[var(--border-subtle)] bg-white/5 px-3 py-0.5 text-xs font-semibold text-[var(--brand-gold)]">
                 {event.day} • {event.dateLabel}
               </span>
             </div>
 
-            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
+            <h1 className="text-2xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
               {event.title}
             </h1>
-            <p className="mt-4 text-lg leading-relaxed text-[var(--brand-gold)]/90">
-              {event.tagline}
-            </p>
-          </ScrollReveal>
 
-          {/* Poster Visual */}
-          <ScrollReveal delay={0.08} className="mt-7">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)]">
-              <Image
-                src={event.posterImage}
-                alt={event.title}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 60vw"
-                className="object-cover"
-              />
-            </div>
-          </ScrollReveal>
-
-          {/* Overview */}
-          <ScrollReveal delay={0.12} className="mt-10 space-y-4">
-            <h2 className="text-2xl font-bold text-white">About This Event</h2>
-            {event.longDescription.map((paragraph, index) => (
-              <p key={index} className="leading-relaxed text-[var(--text-secondary)]">
-                {paragraph}
+            {event.tagline && (
+              <p className="mt-2.5 text-base text-[var(--brand-gold)]/90 sm:text-lg">
+                {event.tagline}
               </p>
-            ))}
+            )}
           </ScrollReveal>
 
-          {/* Highlights */}
-          <ScrollReveal delay={0.16} className="mt-10">
-            <h2 className="text-2xl font-bold text-white">Key Highlights</h2>
-            <ul className="mt-4 space-y-3">
-              {event.highlights.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-[var(--text-primary)]">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[var(--brand-secondary)]" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </ScrollReveal>
-
-          {/* Rules */}
-          <ScrollReveal delay={0.2} className="mt-10">
-            <div className="glass-card rounded-2xl p-6">
-              <div className="mb-4 flex items-center gap-2.5 text-[var(--brand-gold)]">
-                <ShieldAlert className="h-5 w-5 text-[var(--brand-primary)]" />
-                <h2 className="text-xl font-bold text-white">Guidelines &amp; Rules</h2>
+          {/* Poster or Emblem Visual */}
+          {event.posterImage ? (
+            <ScrollReveal delay={0.06} className="mt-6">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-secondary)]">
+                <Image
+                  src={event.posterImage}
+                  alt={event.title}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
+                />
               </div>
-              <ul className="space-y-2.5 text-sm leading-relaxed text-[var(--text-secondary)]">
-                {event.rules.map((rule, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5">
-                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-primary)]" />
-                    <span>{rule}</span>
+            </ScrollReveal>
+          ) : (
+            <div className="mt-6 flex aspect-[21/9] w-full items-center justify-center rounded-2xl border border-[var(--border-subtle)] p-6" style={{ background: "var(--gradient-surface)" }}>
+              <div className="flex items-center gap-3 opacity-60">
+                <Image
+                  src={SITE_CONFIG.assets.logoMark}
+                  alt=""
+                  width={48}
+                  height={48}
+                  className="h-10 w-10 object-contain"
+                />
+                <span className="font-[family-name:var(--font-outfit)] text-sm font-bold tracking-wider text-[var(--brand-gold)]">
+                  {SITE_CONFIG.name}
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Overview Paragraphs */}
+          <ScrollReveal delay={0.1} className="mt-8 space-y-3.5">
+            <h2 className="text-xl font-bold text-white">Event Overview</h2>
+            {event.longDescription && event.longDescription.length > 0 ? (
+              event.longDescription.map((paragraph, index) => (
+                <p key={index} className="text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
+                  {paragraph}
+                </p>
+              ))
+            ) : (
+              <p className="text-sm leading-relaxed text-[var(--text-secondary)] sm:text-base">
+                {event.description}
+              </p>
+            )}
+          </ScrollReveal>
+
+          {/* Key Highlights (if available) */}
+          {hasHighlights && (
+            <ScrollReveal delay={0.14} className="mt-8">
+              <h2 className="text-xl font-bold text-white">Track Highlights</h2>
+              <ul className="mt-3.5 space-y-2.5">
+                {event.highlights!.map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-2.5 text-xs text-[var(--text-primary)] sm:text-sm">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-secondary)]" aria-hidden="true" />
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          )}
+
+          {/* Rules / Guidelines (if available) */}
+          {hasRules && (
+            <ScrollReveal delay={0.18} className="mt-8">
+              <div className="glass-card rounded-2xl p-5 sm:p-6">
+                <div className="mb-3.5 flex items-center gap-2 text-[var(--brand-gold)]">
+                  <ShieldAlert className="h-5 w-5 text-[var(--brand-primary)]" aria-hidden="true" />
+                  <h2 className="text-lg font-bold text-white">Guidelines &amp; Eligibility</h2>
+                </div>
+                <ul className="space-y-2 text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
+                  {event.rules!.map((rule, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand-primary)]" aria-hidden="true" />
+                      <span>{rule}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </ScrollReveal>
+          )}
         </div>
 
-        {/* Sticky Sidebar */}
+        {/* Right / Sticky Sidebar */}
         <aside className="lg:col-span-5">
-          <div className="sticky top-28 space-y-6">
-            <div className="glass-card rounded-2xl p-6 sm:p-7">
-              <h2 className="text-xl font-bold text-white">Event Snapshot</h2>
-              <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          <div className="sticky top-24 space-y-5">
+            {/* Snapshot Card */}
+            <div className="glass-card rounded-2xl p-5 sm:p-6">
+              <h3 className="text-lg font-bold text-white">Event Details</h3>
+
+              <div className="mt-4 space-y-3">
                 {quickSpecs.map((spec) => {
                   const Icon = spec.icon;
                   return (
                     <div
                       key={spec.label}
-                      className="flex items-center gap-3.5 rounded-xl border border-[var(--border-subtle)] bg-black/30 p-3.5"
+                      className="flex items-center gap-3 rounded-xl border border-[var(--border-subtle)] bg-black/25 p-3"
                     >
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-primary)]/14 text-[var(--brand-secondary)]">
-                        <Icon className="h-5 w-5" />
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--brand-primary)]/15 text-[var(--brand-secondary)]">
+                        <Icon className="h-4 w-4" />
                       </div>
                       <div>
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-[var(--text-muted)]">
                           {spec.label}
                         </p>
-                        <p className="text-sm font-semibold text-white">{spec.value}</p>
+                        <p className="text-xs font-semibold text-white sm:text-sm">{spec.value}</p>
                       </div>
                     </div>
                   );
                 })}
               </div>
 
-              <div className="mt-6">
+              <div className="mt-5">
                 <RegistrationCTA
                   url={event.registrationUrl}
                   status={event.registrationStatus}
                   eventTitle={event.title}
-                  size="lg"
+                  size="md"
                   fullWidth
                 />
               </div>
             </div>
 
-            {/* Coordinators */}
-            <div className="glass-card rounded-2xl p-6">
-              <h3 className="text-sm font-bold uppercase tracking-[0.16em] text-[var(--brand-gold)]">
-                Event Contacts
-              </h3>
-              <div className="mt-4 space-y-3">
-                {event.coordinators.map((coord, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-xl border border-[var(--border-subtle)] bg-black/25 p-3.5"
-                  >
-                    <p className="font-semibold text-white">{coord.name}</p>
-                    <p className="text-xs text-[var(--text-secondary)]">{coord.role}</p>
-                    {coord.phone && (
-                      <a
-                        href={`tel:${coord.phone.replace(/\s+/g, "")}`}
-                        className="mt-1 inline-block text-xs font-semibold text-[var(--brand-secondary)]"
-                      >
-                        {coord.phone}
-                      </a>
-                    )}
-                  </div>
-                ))}
+            {/* Event Coordinators Card (if provided) */}
+            {hasCoordinators && (
+              <div className="glass-card rounded-2xl p-5 sm:p-6">
+                <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--brand-gold)]">
+                  Event Contacts
+                </h3>
+                <div className="mt-3.5 space-y-2.5">
+                  {event.coordinators!.map((coord, idx) => (
+                    <div
+                      key={idx}
+                      className="rounded-xl border border-[var(--border-subtle)] bg-black/20 p-3"
+                    >
+                      <p className="text-sm font-bold text-white">{coord.name}</p>
+                      <p className="text-xs text-[var(--text-muted)]">{coord.role}</p>
+                      <div className="mt-1.5 flex flex-wrap gap-3">
+                        {coord.phone && (
+                          <a
+                            href={`tel:${coord.phone.replace(/\s+/g, "")}`}
+                            className="inline-flex items-center gap-1 text-xs font-medium text-[var(--brand-secondary)] hover:underline"
+                          >
+                            <Phone className="h-3 w-3" />
+                            <span>{coord.phone}</span>
+                          </a>
+                        )}
+                        {coord.email && (
+                          <a
+                            href={`mailto:${coord.email}`}
+                            className="inline-flex items-center gap-1 text-xs font-medium text-[var(--brand-secondary)] hover:underline"
+                          >
+                            <Mail className="h-3 w-3" />
+                            <span>{coord.email}</span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </aside>
       </div>

@@ -1,70 +1,72 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Clock } from "lucide-react";
 import { SITE_CONFIG } from "@/data/site";
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+interface CountdownState {
+  text: string;
+  show: boolean;
 }
 
-function computeTimeLeft(targetMs: number): TimeLeft {
-  const diff = Math.max(0, targetMs - Date.now());
-  return {
-    days: Math.floor(diff / 86_400_000),
-    hours: Math.floor((diff % 86_400_000) / 3_600_000),
-    minutes: Math.floor((diff % 3_600_000) / 60_000),
-    seconds: Math.floor((diff % 60_000) / 1000),
-  };
+function computeKolkataCountdown(startDateIso: string, endDateIso: string): CountdownState {
+  try {
+    const now = new Date();
+    // Use Asia/Kolkata timezone explicitly
+    const kolkataStr = now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
+    const kolkataNow = new Date(kolkataStr);
+
+    const start = new Date(startDateIso);
+    const end = new Date(endDateIso);
+
+    if (kolkataNow > end) {
+      return { text: "Event concluded", show: false };
+    }
+
+    if (kolkataNow >= start && kolkataNow <= end) {
+      return { text: "Happening now at CEK Campus", show: true };
+    }
+
+    const diffMs = start.getTime() - kolkataNow.getTime();
+    const days = Math.ceil(diffMs / 86_400_000);
+
+    if (days <= 0) {
+      return { text: "Event launches today", show: true };
+    }
+    if (days === 1) {
+      return { text: "Event launches tomorrow", show: true };
+    }
+
+    return { text: `Event launches in ${days} days`, show: true };
+  } catch {
+    return { text: "January 15–16, 2027", show: true };
+  }
 }
 
-export function CountdownTimer({ targetIso = SITE_CONFIG.startDateIso }: { targetIso?: string }) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+export function CountdownTimer() {
+  const [countdown, setCountdown] = useState<CountdownState>(() =>
+    computeKolkataCountdown(SITE_CONFIG.startDateIso, SITE_CONFIG.endDateIso)
+  );
 
   useEffect(() => {
-    const targetMs = new Date(targetIso).getTime();
-    setTimeLeft(computeTimeLeft(targetMs));
+    // Update every hour rather than every second to eliminate CPU drain and screen-reader chatter
+    const interval = window.setInterval(() => {
+      setCountdown(computeKolkataCountdown(SITE_CONFIG.startDateIso, SITE_CONFIG.endDateIso));
+    }, 3_600_000);
 
-    const timer = window.setInterval(() => {
-      setTimeLeft(computeTimeLeft(targetMs));
-    }, 1000);
+    return () => window.clearInterval(interval);
+  }, []);
 
-    return () => window.clearInterval(timer);
-  }, [targetIso]);
-
-  const units = [
-    { label: "Days", value: timeLeft ? String(timeLeft.days).padStart(2, "0") : "--" },
-    { label: "Hours", value: timeLeft ? String(timeLeft.hours).padStart(2, "0") : "--" },
-    { label: "Minutes", value: timeLeft ? String(timeLeft.minutes).padStart(2, "0") : "--" },
-    { label: "Seconds", value: timeLeft ? String(timeLeft.seconds).padStart(2, "0") : "--" },
-  ];
+  if (!countdown.show) return null;
 
   return (
     <div
-      role="timer"
-      aria-label={`Countdown to ${SITE_CONFIG.name}`}
-      className="glass-card rounded-2xl p-3.5 sm:p-5"
+      role="status"
+      aria-label="Event timeline"
+      className="inline-flex items-center gap-2 rounded-full border border-[var(--border-subtle)] bg-[var(--bg-elevated)]/80 px-3.5 py-1 text-xs font-semibold text-[var(--brand-gold)]"
     >
-      <p className="mb-2.5 text-center text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--brand-gold)] sm:mb-3 sm:text-xs">
-        Event Launches In
-      </p>
-      <div className="grid grid-cols-4 gap-2 sm:gap-3.5">
-        {units.map((unit) => (
-          <div key={unit.label} className="text-center">
-            <div
-              className="flex items-center justify-center rounded-xl py-2.5 font-[family-name:var(--font-outfit)] text-xl font-extrabold tabular-nums text-white shadow-lg shadow-[var(--brand-primary)]/20 sm:py-3.5 sm:text-3xl"
-              style={{ background: "var(--gradient-brand)" }}
-            >
-              {unit.value}
-            </div>
-            <span className="mt-1.5 block text-[10px] font-bold uppercase tracking-[0.12em] text-[var(--text-secondary)] sm:mt-2 sm:text-xs">
-              {unit.label}
-            </span>
-          </div>
-        ))}
-      </div>
+      <Clock className="h-3.5 w-3.5 text-[var(--brand-primary)]" aria-hidden="true" />
+      <span>{countdown.text}</span>
     </div>
   );
 }

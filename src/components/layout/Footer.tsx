@@ -5,55 +5,55 @@ import { NAV_LINKS, SITE_CONFIG, SOCIAL_LINKS } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-[var(--border-subtle)] bg-[#050303] pt-16 pb-10">
+    <footer className="relative border-t border-[var(--border-subtle)] bg-[#050303] pt-14 pb-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 pb-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
+        <div className="grid grid-cols-1 gap-10 pb-10 md:grid-cols-2 lg:grid-cols-4">
+          {/* Brand & Mission Statement */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-[var(--brand-secondary)]/25 bg-[var(--brand-secondary)]/5 p-1.5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--brand-secondary)]/25 bg-[var(--brand-secondary)]/5 p-1.5">
                 <Image
                   src={SITE_CONFIG.assets.logoMark}
-                  alt={SITE_CONFIG.name}
-                  width={40}
-                  height={40}
+                  alt=""
+                  width={36}
+                  height={36}
                   className="h-full w-full object-contain"
                 />
               </div>
               <div>
-                <p className="font-[family-name:var(--font-outfit)] text-xl font-extrabold tracking-tight text-white">
+                <p className="font-[family-name:var(--font-outfit)] text-lg font-bold tracking-tight text-white">
                   {SITE_CONFIG.name}
                 </p>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--brand-gold)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-gold)]">
                   {SITE_CONFIG.datesDisplay}
                 </p>
               </div>
             </Link>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-[var(--text-secondary)]">
+            <p className="mt-3.5 max-w-md text-sm leading-relaxed text-[var(--text-secondary)]">
               {SITE_CONFIG.heroSubtitle}
             </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap gap-2.5">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.id}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-white/[0.03] px-3.5 py-1.5 text-xs font-semibold text-[var(--text-secondary)] transition-colors hover:border-[var(--border-strong)] hover:text-[var(--brand-secondary)]"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border-subtle)] bg-white/[0.03] px-3 py-1 text-xs font-semibold text-[var(--text-secondary)] transition-colors hover:border-[var(--border-strong)] hover:text-white"
                 >
                   <span>{social.label}</span>
-                  <ExternalLink className="h-3 w-3" />
+                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Navigation */}
+          {/* Quick Navigation Links */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand-gold)]">
-              Explore
+            <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--brand-gold)]">
+              Navigation
             </h3>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-3.5 space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -67,61 +67,72 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Organizer & Campus */}
+          {/* Organiser & Campus Information */}
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-[0.18em] text-[var(--brand-gold)]">
-              Organised By
+            <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-[var(--brand-gold)]">
+              Host &amp; Venue
             </h3>
-            <p className="mt-4 text-sm font-semibold text-white">
+            <p className="mt-3.5 text-sm font-semibold text-white">
               {SITE_CONFIG.organizer}
             </p>
-            <div className="mt-3 space-y-2 text-sm text-[var(--text-secondary)]">
+            <div className="mt-2.5 space-y-2 text-sm text-[var(--text-secondary)]">
               <p className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-primary)]" />
-                <span>{SITE_CONFIG.addressLines.join(", ")}</span>
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand-primary)]" aria-hidden="true" />
+                <span>{SITE_CONFIG.campusLabel}</span>
               </p>
               <a
                 href={`mailto:${SITE_CONFIG.primaryEmail}`}
-                className="flex items-center gap-2 hover:text-[var(--brand-secondary)]"
+                className="flex items-center gap-2 hover:text-white"
               >
-                <Mail className="h-4 w-4 shrink-0 text-[var(--brand-primary)]" />
+                <Mail className="h-4 w-4 shrink-0 text-[var(--brand-primary)]" aria-hidden="true" />
                 <span>{SITE_CONFIG.primaryEmail}</span>
               </a>
-              <a
-                href={SITE_CONFIG.iedcWebsite}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 pt-1 text-xs font-bold text-[var(--brand-gold)] hover:text-[var(--brand-secondary)]"
-              >
-                <span>IEDC CEKNPY Website</span>
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <div className="flex flex-col gap-1 pt-1 text-xs font-semibold text-[var(--brand-gold)]">
+                <a
+                  href={SITE_CONFIG.collegeWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-[var(--brand-secondary)]"
+                >
+                  <span>CEK Official Website</span>
+                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                </a>
+                <a
+                  href={SITE_CONFIG.iedcWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 hover:text-[var(--brand-secondary)]"
+                >
+                  <span>IEDC CEKNPY Portal</span>
+                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Institutional Partner Logos */}
-        <div className="flex flex-wrap items-center justify-center gap-10 border-t border-[var(--border-subtle)] py-8">
+        <div className="flex flex-wrap items-center justify-center gap-8 border-t border-[var(--border-subtle)] py-6 sm:gap-12">
           <Image
             src={SITE_CONFIG.assets.iedcKsumLogo}
-            alt="IEDC Kerala Startup Mission Logo"
-            width={180}
-            height={64}
-            className="h-12 w-auto object-contain opacity-85 transition-opacity hover:opacity-100 sm:h-14"
+            alt="Kerala Startup Mission IEDC"
+            width={160}
+            height={50}
+            className="h-10 w-auto object-contain opacity-85 transition-opacity hover:opacity-100 sm:h-12"
           />
           <Image
             src={SITE_CONFIG.assets.iedcLogo}
-            alt="IEDC College of Engineering Karunagappally Logo"
-            width={160}
-            height={64}
-            className="h-12 w-auto object-contain opacity-85 transition-opacity hover:opacity-100 sm:h-14"
+            alt="IEDC CEKNPY"
+            width={150}
+            height={50}
+            className="h-10 w-auto object-contain opacity-85 transition-opacity hover:opacity-100 sm:h-12"
           />
         </div>
 
-        {/* Bottom Copyright */}
-        <div className="flex flex-col items-center justify-between gap-3 border-t border-[var(--border-subtle)] pt-6 text-xs text-[var(--text-muted)] sm:flex-row">
+        {/* Copyright */}
+        <div className="flex flex-col items-center justify-between gap-2 border-t border-[var(--border-subtle)] pt-5 text-xs text-[var(--text-muted)] sm:flex-row">
           <p>
-            &copy; 2027 {SITE_CONFIG.name} • IEDC {SITE_CONFIG.collegeName}. All rights reserved.
+            &copy; 2027 {SITE_CONFIG.name} • IEDC {SITE_CONFIG.collegeName}.
           </p>
           <p>Built by IEDC CEKNPY Tech Team</p>
         </div>

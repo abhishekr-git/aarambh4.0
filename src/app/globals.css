@@ -1,41 +1,38 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   AARAMBH 4.0 — Centralized Design Token System
-   Swap any visual identity token here to retheme the entire application.
-   Currently synced with the Aarambh 4.0 Obsidian & Ember Flame logo palette.
+   AARAMBH 4.0 — Unified Design System & Accessible Token Hierarchy
+   WCAG 2.2 AA compliant typography, calibrated contrast & performance tokens.
    ========================================================================== */
 
 :root {
   /* Core Surfaces */
   --bg-primary: #070505;
   --bg-secondary: #120b0a;
-  --bg-elevated: #180f0d;
-  --bg-card: rgba(24, 15, 13, 0.76);
-  --bg-card-hover: rgba(36, 21, 16, 0.92);
+  --bg-elevated: #1a0f0d;
+  --bg-card: rgba(24, 15, 13, 0.82);
+  --bg-card-hover: rgba(36, 22, 18, 0.95);
 
-  /* Borders & Hairlines */
-  --border-subtle: rgba(255, 198, 130, 0.12);
-  --border-strong: rgba(245, 93, 5, 0.48);
+  /* Hairlines & Structural Borders */
+  --border-subtle: rgba(255, 205, 145, 0.14);
+  --border-strong: rgba(245, 93, 5, 0.42);
 
-  /* Text Hierarchy */
+  /* Text Hierarchy — Calibrated for > 5:1 contrast on obsidian background */
   --text-heading: #ffffff;
   --text-primary: #faf6f0;
-  --text-secondary: #b5a69b;
-  --text-muted: #7d6e64;
+  --text-secondary: #c7b8ad;
+  --text-muted: #8f8076;
 
-  /* Brand Palette (Extracted from Official Aarambh 4.0 Logo) */
+  /* Brand Signature Palette (Derived from official angular Aarambh 4.0 emblem) */
   --brand-crimson: #d80b24;
   --brand-primary: #f55d05;
   --brand-secondary: #ffb800;
   --brand-gold: #e6c675;
 
-  /* Glows & Gradients */
-  --glow-primary: rgba(245, 93, 5, 0.42);
-  --glow-secondary: rgba(255, 184, 0, 0.32);
+  /* Restrained Focal Accents & Surfaces */
+  --glow-primary: rgba(245, 93, 5, 0.32);
   --gradient-brand: linear-gradient(135deg, #d80b24 0%, #f55d05 52%, #ffb800 100%);
-  --gradient-gold: linear-gradient(135deg, #fff1c1 0%, #e6c675 50%, #c99a3e 100%);
-  --gradient-surface: linear-gradient(145deg, rgba(216, 11, 36, 0.1) 0%, rgba(255, 184, 0, 0.04) 100%);
+  --gradient-surface: linear-gradient(150deg, rgba(32, 18, 15, 0.8) 0%, rgba(18, 11, 10, 0.9) 100%);
 }
 
 @theme inline {
@@ -49,8 +46,8 @@
   --color-brand-primary: var(--brand-primary);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-gold: var(--brand-gold);
-  --font-sans: var(--font-jakarta), system-ui, -apple-system, sans-serif;
-  --font-heading: var(--font-outfit), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-outfit), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 html {
@@ -68,9 +65,16 @@ body {
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
-/* Hide scrollbars cleanly for mobile horizontal pill rails */
+/* Subtle ambient dot grid */
+.bg-dot-grid {
+  background-image: radial-gradient(rgba(255, 184, 0, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Hide scrollbars cleanly for mobile horizontal filter rails */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -82,9 +86,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   color: var(--text-heading);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
 }
 
-/* Signature Brand Utilities */
+/* Restrained Brand Gradient Text for Key Emphasized Words Only */
 .gradient-text {
   background: var(--gradient-brand);
   -webkit-background-clip: text;
@@ -92,83 +98,69 @@ h1, h2, h3, h4, h5, h6 {
   background-clip: text;
 }
 
-.gradient-gold-text {
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
+/* Premium Calm Surface Card */
 .glass-card {
-  background: linear-gradient(155deg, rgba(28, 17, 14, 0.92) 0%, rgba(16, 10, 9, 0.94) 100%);
+  background: var(--gradient-surface);
   border: 1px solid var(--border-subtle);
-  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .glass-card:hover {
   border-color: var(--border-strong);
-  background: linear-gradient(155deg, rgba(38, 22, 17, 0.96) 0%, rgba(20, 12, 10, 0.98) 100%);
+  background: linear-gradient(150deg, rgba(42, 23, 19, 0.88) 0%, rgba(22, 13, 12, 0.96) 100%);
 }
 
+/* Primary Action Button — High Contrast & Tactile */
 .btn-brand {
   background: var(--gradient-brand);
   color: #ffffff;
-  box-shadow: 0 8px 26px var(--glow-primary);
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, opacity 0.2s ease;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 4px 18px var(--glow-primary);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-brand:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 34px rgba(245, 93, 5, 0.58);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(245, 93, 5, 0.48);
 }
 
+.btn-brand:active {
+  transform: translateY(0);
+}
+
+/* Secondary Button — Elegant Translucent Outline */
 .btn-outline-glass {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
-  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-outline-glass:hover {
   border-color: var(--border-strong);
   background: rgba(245, 93, 5, 0.12);
-  transform: translateY(-2px);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
-/* Ambient Dot Grid */
-.bg-dot-grid {
-  background-image: radial-gradient(rgba(255, 184, 0, 0.08) 1px, transparent 1px);
-  background-size: 32px 32px;
+.btn-outline-glass:active {
+  transform: translateY(0);
 }
 
-/* Signature Scrolling Marquee Ribbon */
-@keyframes ribbonScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.ribbon-track {
-  display: flex;
-  width: max-content;
-  will-change: transform;
-  animation: ribbonScroll 30s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ribbon-track {
-    animation: none;
-  }
-  *, *::before, *::after {
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Focus Accessibility */
+/* Standard Accessible Focus States */
 :focus-visible {
   outline: 2px solid var(--brand-secondary);
   outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
