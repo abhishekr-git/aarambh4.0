@@ -154,11 +154,11 @@ export function EventGrid({ events, showFilter = true }: EventGridProps) {
         <div className="glass-card rounded-2xl p-10 text-center">
           <p className="text-base font-semibold text-white">No events found in this category.</p>
           <p className="mt-1.5 text-xs text-[var(--text-secondary)]">
-            Check back soon as more Aarambh 4.0 sessions are confirmed.
+            Check back as more Aarambh 4.0 tracks are confirmed.
           </p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {filteredEvents.map((event, idx) => (
             <EventCard key={event.slug} event={event} index={idx} />
           ))}

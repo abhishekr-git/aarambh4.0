@@ -45,9 +45,7 @@ export function Navbar() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen]);
 
-  const headerCta = HAS_PUBLISHED_EVENTS
-    ? { href: "/events", label: "Explore Events" }
-    : { href: "/#location", label: "Plan your visit" };
+  const headerCta = { href: "/events", label: "Register Now" };
 
   return (
     <header

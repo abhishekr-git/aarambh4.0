@@ -62,8 +62,8 @@ export const IEDC_PROFILE = {
 
 export const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/events", label: "Events" },
+  { href: "/about", label: "About" },
   { href: "/schedule", label: "Schedule" },
   { href: "/gallery", label: "Gallery" },
   { href: "/sponsors", label: "Sponsors" },

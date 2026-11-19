@@ -2,17 +2,15 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowRight, BookOpen, Compass, Cpu, Flame, Lightbulb, Trophy, Users } from "lucide-react";
 import {
-  FESTIVAL_METRICS,
   IEDC_PROFILE,
   SITE_CONFIG,
 } from "@/data/site";
-import { HAS_PUBLISHED_EVENTS, PUBLISHED_EVENTS } from "@/data/events";
+import { PUBLISHED_EVENTS } from "@/data/events";
 import { INSTITUTIONAL_PARTNERS } from "@/data/sponsors";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { RibbonDivider } from "@/components/ui/RibbonDivider";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { EventGrid } from "@/components/events/EventGrid";
 
 const LocationMapSection = dynamic(
@@ -24,7 +22,7 @@ const FESTIVAL_PILLARS = [
   {
     icon: Lightbulb,
     title: "Innovation Hub",
-    description: "Prototype software, AI tools, robotics, and sustainable engineering solutions with fellow students.",
+    description: "Prototype software, AI tools, robotics, and engineering solutions with fellow students.",
   },
   {
     icon: Users,
@@ -34,7 +32,7 @@ const FESTIVAL_PILLARS = [
   {
     icon: Trophy,
     title: "Competitive Arenas",
-    description: "Compete in 24-hour hackathons, combat robotics battles, and technical design sprints.",
+    description: "Compete in hackathons, combat robotics battles, and technical design sprints.",
   },
   {
     icon: BookOpen,
@@ -52,18 +50,44 @@ export default function HomePage() {
       {/* 2. Compact Ribbon Divider */}
       <RibbonDivider />
 
-      {/* 3. Festival Introduction & Core Pillars */}
-      <section id="about" className="py-16 sm:py-24">
+      {/* 3. Event Lineup Section (Placed Immediately Beneath Ticker) */}
+      <section id="events" className="scroll-mt-24 sm:scroll-mt-28 py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <SectionHeading
-            kicker="Welcome to Aarambh 4.0"
+            kicker="Festival Lineup"
+            title="Explore"
+            highlight="events"
+            subtitle="Preview lineup · Registration is in demo mode."
+          />
+
+          <div className="mt-10 sm:mt-12">
+            <EventGrid events={PUBLISHED_EVENTS} showFilter={false} />
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              href="/events"
+              className="btn-outline-glass inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold sm:text-sm"
+            >
+              <span>View all events</span>
+              <ArrowRight className="h-4 w-4 text-[var(--brand-secondary)]" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Festival Introduction & Core Pillars */}
+      <section id="about" className="border-t border-[var(--border-subtle)] bg-[var(--bg-secondary)]/40 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            kicker="About Aarambh 4.0"
             title="Two Days of Technology &amp;"
             highlight="Innovation"
-            subtitle="Hosted by IEDC at College of Engineering Karunagappally, Aarambh 4.0 unites student builders, developers, and makers on January 15–16, 2027."
+            subtitle="Hosted by IEDC at College of Engineering Karunagappally, uniting student builders and makers on January 15–16, 2027."
           />
 
           {/* 4 Core Pillars */}
-          <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {FESTIVAL_PILLARS.map((pillar, idx) => {
               const Icon = pillar.icon;
               return (
@@ -84,30 +108,8 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Key Numbers Strip */}
-          <ScrollReveal className="mt-12">
-            <div
-              className="rounded-2xl border border-[var(--brand-primary)]/30 p-6 sm:p-8"
-              style={{ background: "var(--gradient-surface)" }}
-            >
-              <div className="grid grid-cols-2 gap-6 text-center lg:grid-cols-4">
-                {FESTIVAL_METRICS.map((metric) => (
-                  <div key={metric.label}>
-                    <p className="font-[family-name:var(--font-outfit)] text-2xl font-bold gradient-text sm:text-4xl">
-                      <AnimatedCounter value={metric.value} suffix={metric.suffix} />
-                    </p>
-                    <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-white sm:text-sm">
-                      {metric.label}
-                    </p>
-                    <p className="text-[11px] text-[var(--text-muted)]">{metric.context}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-
           {/* Short Organiser & Host Summary */}
-          <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
             <ScrollReveal>
               <div className="glass-card flex h-full flex-col justify-between rounded-2xl p-6 sm:p-7">
                 <div>
@@ -119,19 +121,17 @@ export default function HomePage() {
                     {IEDC_PROFILE.chapterName}
                   </h3>
                   <p className="mt-2.5 text-xs leading-relaxed text-[var(--text-secondary)] sm:text-sm">
-                    {IEDC_PROFILE.mission}
+                    {IEDC_PROFILE.history}
                   </p>
                 </div>
-                <div className="mt-4 pt-2">
-                  <a
-                    href={SITE_CONFIG.iedcWebsite}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                <div className="mt-5 pt-2">
+                  <Link
+                    href="/about"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-secondary)] hover:underline"
                   >
-                    <span>Learn about IEDC CEKNPY</span>
+                    <span>Read Full Story on About Page</span>
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </ScrollReveal>
@@ -140,8 +140,8 @@ export default function HomePage() {
               <div className="glass-card flex h-full flex-col justify-between rounded-2xl p-6 sm:p-7">
                 <div>
                   <div className="mb-2.5 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[var(--brand-gold)]">
-                    <Compass className="h-4 w-4 text-[var(--brand-secondary)]" aria-hidden="true" />
-                    <span>Host Institution</span>
+                    <Compass className="h-4 w-4 text-[var(--brand-gold)]" aria-hidden="true" />
+                    <span>The Campus</span>
                   </div>
                   <h3 className="text-xl font-bold text-white">
                     {SITE_CONFIG.collegeName}
@@ -150,47 +150,17 @@ export default function HomePage() {
                     Established under IHRD and affiliated with APJ Abdul Kalam Technological University, CEK has been pioneering engineering education, maker culture, and technical innovation in Kollam, Kerala.
                   </p>
                 </div>
-                <div className="mt-4 pt-2">
+                <div className="mt-5 pt-2">
                   <Link
-                    href="/about"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-gold)] hover:text-[var(--brand-secondary)]"
+                    href="#location"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[var(--brand-gold)] hover:underline"
                   >
-                    <span>Read full story &amp; achievements</span>
+                    <span>Campus Location &amp; Transit</span>
                     <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                   </Link>
                 </div>
               </div>
             </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Programme / Lineup Update */}
-      <section id="events" className="border-t border-[var(--border-subtle)] bg-[var(--bg-secondary)]/40 py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            kicker="Tracks &amp; Lineup"
-            title="Aarambh 4.0"
-            highlight="Programme"
-            subtitle={
-              HAS_PUBLISHED_EVENTS
-                ? "Browse confirmed hackathons, competitions, workshops, and exhibitions."
-                : "Competitions, hackathons, and workshops are in active preparation. Check back as track briefs and registration details unlock."
-            }
-          />
-
-          <div className="mt-10 sm:mt-12">
-            <EventGrid events={PUBLISHED_EVENTS} />
-          </div>
-
-          <div className="mt-10 text-center">
-            <Link
-              href="/events"
-              className="btn-outline-glass inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-xs font-bold sm:text-sm"
-            >
-              <span>View Full Events Page</span>
-              <ArrowRight className="h-4 w-4 text-[var(--brand-secondary)]" aria-hidden="true" />
-            </Link>
           </div>
         </div>
       </section>

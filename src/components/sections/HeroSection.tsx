@@ -96,25 +96,15 @@ export function HeroSection() {
               <CountdownTimer />
             </div>
 
-            {/* Action Buttons — "Plan your visit" has strongest gradient; "Sponsor & partner" is quieter secondary */}
+            {/* Action Buttons — Primary "Explore Events" scrolls directly to event lineup beneath ticker */}
             <div className="mt-6 flex flex-col items-stretch justify-start gap-3 sm:flex-row sm:items-center">
-              {HAS_PUBLISHED_EVENTS ? (
-                <Link
-                  href="/events"
-                  className="btn-brand inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold sm:text-base"
-                >
-                  <span>Explore events</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              ) : (
-                <Link
-                  href="#location"
-                  className="btn-brand inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold sm:text-base"
-                >
-                  <span>Plan your visit</span>
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-              )}
+              <Link
+                href="#events"
+                className="btn-brand inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-bold sm:text-base"
+              >
+                <span>Explore Events</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
 
               <Link
                 href="/sponsors"
@@ -123,11 +113,6 @@ export function HeroSection() {
                 <span>Sponsor &amp; partner</span>
               </Link>
             </div>
-
-            {/* Quiet Announcement Notice */}
-            <p className="mt-4 text-xs text-[var(--text-muted)] sm:text-sm">
-              Event lineup and registration details will be announced here.
-            </p>
           </motion.div>
         </div>
       </div>

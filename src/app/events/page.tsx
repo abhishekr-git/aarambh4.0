@@ -16,14 +16,10 @@ export default function EventsPage() {
     <div className="mx-auto max-w-7xl px-4 pt-28 pb-20 sm:px-6 lg:px-8">
       <SectionHeading
         as="h1"
-        kicker={`${SITE_CONFIG.datesShort} • CEK Campus`}
-        title="Festival Tracks &"
-        highlight="Events"
-        subtitle={
-          publishedEvents.length > 0
-            ? "Browse confirmed Aarambh 4.0 hackathons, robotics arenas, technical workshops, and stage experiences."
-            : "The official competition schedule, workshop curricula, and registration access will be published here."
-        }
+        kicker="Aarambh 4.0"
+        title="Explore"
+        highlight="events"
+        subtitle="Preview lineup · Registration is in demo mode."
       />
       <div className="mt-10 sm:mt-12">
         <EventGrid events={publishedEvents} />
