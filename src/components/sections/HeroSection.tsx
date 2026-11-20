@@ -64,9 +64,18 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col items-start text-left md:col-span-7"
           >
-            {/* H1: Aarambh 4.0 */}
-            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              {SITE_CONFIG.name}
+            {/* H1: Aarambh 4.0 Brand Typography */}
+            <h1 className="relative flex items-center">
+              <span className="sr-only">{SITE_CONFIG.name}</span>
+              <Image
+                src="/images/aarambh-hero-title.png"
+                alt={SITE_CONFIG.name}
+                width={696}
+                height={94}
+                priority
+                sizes="(max-width: 640px) 280px, (max-width: 768px) 380px, (max-width: 1024px) 480px, 560px"
+                className="h-auto w-full max-w-[280px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[560px] object-contain drop-shadow-[0_4px_24px_rgba(216,11,36,0.28)] select-none"
+              />
             </h1>
 
             {/* Clear Host Line with IEDC highlighted */}
