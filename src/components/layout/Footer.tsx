@@ -11,7 +11,7 @@ export function Footer() {
           {/* Brand & Mission Statement */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--brand-secondary)]/25 bg-[var(--brand-secondary)]/5 p-1.5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-[var(--brand-secondary)]/25 bg-[var(--brand-secondary)]/5 p-1.5 transition-transform duration-300 hover:scale-105">
                 <Image
                   src={SITE_CONFIG.assets.logoMark}
                   alt=""
@@ -20,11 +20,16 @@ export function Footer() {
                   className="h-full w-full object-contain"
                 />
               </div>
-              <div>
-                <p className="font-[family-name:var(--font-outfit)] text-lg font-bold tracking-tight text-white">
-                  {SITE_CONFIG.name}
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-gold)]">
+              <div className="flex flex-col justify-center">
+                <span className="sr-only">{SITE_CONFIG.name}</span>
+                <Image
+                  src="/images/aarambh-hero-title.png"
+                  alt={SITE_CONFIG.name}
+                  width={696}
+                  height={94}
+                  className="h-5 sm:h-6 w-auto object-contain object-left drop-shadow-[0_2px_12px_rgba(216,11,36,0.2)] select-none"
+                />
+                <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-gold)]">
                   {SITE_CONFIG.datesDisplay}
                 </p>
               </div>
