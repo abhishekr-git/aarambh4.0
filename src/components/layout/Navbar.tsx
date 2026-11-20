@@ -77,11 +77,17 @@ export function Navbar() {
                 className="h-full w-full object-contain"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-[family-name:var(--font-outfit)] text-sm font-extrabold tracking-tight text-white sm:text-base">
-                {SITE_CONFIG.name}
-              </span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-gold)]">
+            <div className="flex flex-col justify-center">
+              <span className="sr-only">{SITE_CONFIG.name}</span>
+              <Image
+                src="/images/aarambh-hero-title.png"
+                alt={SITE_CONFIG.name}
+                width={696}
+                height={94}
+                priority
+                className="h-4 w-auto object-contain object-left drop-shadow-[0_2px_12px_rgba(216,11,36,0.2)] select-none sm:h-5"
+              />
+              <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-gold)] sm:text-[10px]">
                 IEDC CEK • {SITE_CONFIG.datesShort}
               </span>
             </div>
