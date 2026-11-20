@@ -18,7 +18,7 @@ Official web platform for **AARAMBH 4.0** (**January 16–17, 2027**), the flags
 - `/schedule` — Interactive day-wise schedule (Day 1 Jan 16 & Day 2 Jan 17)
 - `/gallery` — Visual gallery with accessible keyboard lightbox
 - `/sponsors` — Institutional partners & sponsorship tiers
-- `/about` — Festival story, IEDC CEK overview, Aarambh 3.0 highlights, Organising Committee
+- `/about` — Festival story, IEDC CEK overview, campus highlights, Organising Committee
 - `/contact` — Contact channels, Google Maps, Bus/Train Travel Guide, FAQs
 
 ## Centralised Data & Easy Re-Theming
