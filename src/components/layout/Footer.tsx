@@ -27,7 +27,8 @@ export function Footer() {
                   alt={SITE_CONFIG.name}
                   width={696}
                   height={94}
-                  className="h-5 sm:h-6 w-auto object-contain object-left drop-shadow-[0_2px_12px_rgba(216,11,36,0.2)] select-none"
+                  sizes="(max-width: 640px) 150px, 180px"
+                  className="h-5 sm:h-6 w-auto aspect-[696/94] object-contain object-left drop-shadow-[0_2px_12px_rgba(216,11,36,0.2)] select-none"
                 />
                 <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-gold)]">
                   {SITE_CONFIG.datesDisplay}

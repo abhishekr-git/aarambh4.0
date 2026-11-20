@@ -62,10 +62,10 @@ export function HeroSection() {
             initial={prefersReduced ? false : { opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-start text-left md:col-span-7"
+            className="flex w-full flex-col items-start text-left md:col-span-7"
           >
             {/* H1: Aarambh 4.0 Brand Typography */}
-            <h1 className="relative flex items-center">
+            <h1 className="relative block w-full max-w-[290px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[560px]">
               <span className="sr-only">{SITE_CONFIG.name}</span>
               <Image
                 src="/images/aarambh-hero-title.png"
@@ -73,8 +73,8 @@ export function HeroSection() {
                 width={696}
                 height={94}
                 priority
-                sizes="(max-width: 640px) 280px, (max-width: 768px) 380px, (max-width: 1024px) 480px, 560px"
-                className="h-auto w-full max-w-[280px] sm:max-w-[380px] md:max-w-[480px] lg:max-w-[560px] object-contain drop-shadow-[0_4px_24px_rgba(216,11,36,0.28)] select-none"
+                sizes="(max-width: 640px) 290px, (max-width: 768px) 380px, (max-width: 1024px) 480px, 560px"
+                className="block h-auto w-full aspect-[696/94] object-contain object-left drop-shadow-[0_4px_24px_rgba(216,11,36,0.28)] select-none"
               />
             </h1>
 

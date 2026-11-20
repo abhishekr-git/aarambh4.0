@@ -85,7 +85,8 @@ export function Navbar() {
                 width={696}
                 height={94}
                 priority
-                className="h-4 w-auto object-contain object-left drop-shadow-[0_2px_12px_rgba(216,11,36,0.2)] select-none sm:h-5"
+                sizes="(max-width: 640px) 120px, 150px"
+                className="h-4 sm:h-5 w-auto aspect-[696/94] object-contain object-left drop-shadow-[0_2px_12px_rgba(216,11,36,0.2)] select-none"
               />
               <span className="mt-0.5 text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--brand-gold)] sm:text-[10px]">
                 IEDC CEK • {SITE_CONFIG.datesShort}
